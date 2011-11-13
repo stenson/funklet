@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+      .tr {
+        height: 24px;
+      }
+
+      .td-holder {
+        height: 24px;
+        width: 20px;
+        border-right: 1px solid #eee;
+        /*-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.3);*/
+        float: left;
+      }
+
+      .td-holder:nth-child(4n+4) {
+        border-right: 5px solid #ddd;
+      }
+
+      .td {
+        height: 12px;
+        width: 20px;
+        background: white;
+      }
+
+      .td[title="4"] {
+        background: red;
+      }
+
+      .td[title="3"] {
+        background: orange;
+      }
+
+      .td[title="2"] {
+        background: lightgreen;
+      }
+
+      .td[title="1"] {
+        background: lightblue;
+      }
+
+      #progress-bar {
+        height: 12px;
+        width: 704px;
+        margin-bottom: 12px;
+        background: whitesmoke;
+        position: relative;
+      }
+
+      #progress-indicator {
+        height: 12px;
+        width: 20px;
+        background: #ccc;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="diagram">
+      <div id="progress-bar">
+        <div id="progress-indicator"></div>
+      </div>
+    </div>
+    <script>
+
+  var values = [
+    [3, 0, 3, 0,    3, 0, 3, 0,   3, 0, 3, 0,   3, 0, 3, 0,     3, 0, 3, 0,    3, 0, 3, 0,   3, 0, 3, 0,   3, 0, 3, 0 ],
+    [0, 0, 0, 0,    0, 0, 4, 0,   0, 2, 0, 0,   0, 0, 4, 0,     0, 2, 0, 0,    4, 2, 0, 3,   0, 2, 2, 2,   0, 2, 2, 2 ],
+    [3, 0, 4, 0,    0, 0, 0, 0,   0, 0, 4, 0,   0, 0, 0, 0,     0, 0, 4, 0,    0, 0, 0, 0,   3, 0, 0, 0,   3, 0, 3, 0 ]
+  ];
+
+    </script>
+    <script src="cabin.js"></script>
+    <script src="funklet.js"></script>
+  </body>
+</html>
