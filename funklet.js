@@ -58,12 +58,22 @@ var writeValuesIntoRow = function(values, table) {
 };
 
 var writeValuesIntoTable = function(patterns, div) {
-  var table = cabin("div.table");
-  div.appendChild(table);
   return patterns.map(function(values) {
-    return writeValuesIntoRow(values, table);
+    return writeValuesIntoRow(values, div);
   });
 };
+
+var writeIndicatorsIntoTable = function(length, div) {
+  var tr = cabin("div.tr.indicators");
+  var tds = [];
+  for(var i = 0; i < length; i++) {
+    tds.push(writeValueIntoCell(0, tr));
+  }
+  div.appendChild(tr);
+  return tds;
+};
+
+/* listening for value changes */
 
 var listenForValuesFromRows = function(rows, values, limit) {
   rows.forEach(function(tr, i) {
@@ -105,10 +115,6 @@ var getMetronome = function(context, bpm, readCount, clickback) {
 
 
 
-
-
-
-
 /* run the program */
 
 var originals = values.map(function(v) { return v.concat([]); }); // copy
@@ -122,29 +128,31 @@ var volumes = {
 };
 
 var diagram = document.getElementById("diagram");
+var indicators = writeIndicatorsIntoTable(length+1, diagram);
 var rows = writeValuesIntoTable(values, diagram);
 listenForValuesFromRows(rows, values, 4);
 
 var context = new webkitAudioContext();
 var names = ["hihat", "snare", "kick"];
-var bpm = 120;
-var buffers;
+var bpm = 100;
 
-var indicator = document.getElementById("progress-indicator");
-var totalWidth = 704;
-
-getBuffersFromSampleNames(names, context, function(bs) {
-  buffers = bs;
-  playSampleWithBuffer(context, buffers.kick, 0, 0);
-  // return;
+getBuffersFromSampleNames(names, context, function(buffers) {
 
   var i = 0;
   var metronome = getMetronome(context, bpm, 4, function(lag) {
-    values.forEach(function(row, j) {
+    var last = ((i - 1) >= 0) ? (i-1) : length;
+    
+    var totalVolume = values.reduce(function(acc, row, j) {
       var volume = row[i];
+      rows[j][last].className = "td";
+      rows[j][i].className = "td current";
       (volume !== 0) && playSampleWithBuffer(context, buffers[names[j]], 0, volumes[volume]);
-    });
-    indicator.style.left = (i*22) + "px";
+      return acc + volume;
+    }, 0);
+    
+    indicators[i].title = Math.min(totalVolume, 4);
+    indicators[last].title = 0;
+    
     i = (i === length) ? 0 : (i + 1);
   });
 

@@ -10,23 +10,24 @@
       .td-holder {
         height: 24px;
         width: 20px;
-        border-right: 1px solid #eee;
+        border-right: 1px solid #ddd;
         /*-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.3);*/
         float: left;
       }
 
       .td-holder:nth-child(4n+4) {
-        border-right: 5px solid #ddd;
+        border-right: 5px solid #ccc;
       }
 
       .td {
+        margin-top: 12px;
         height: 12px;
         width: 20px;
         background: white;
       }
 
       .td[title="4"] {
-        background: red;
+        background: rgb(215, 0, 24);
       }
 
       .td[title="3"] {
@@ -34,28 +35,35 @@
       }
 
       .td[title="2"] {
-        background: lightgreen;
+        background: rgb(147, 218, 117);
       }
 
       .td[title="1"] {
         background: lightblue;
       }
-
-      #progress-bar {
-        height: 12px;
-        width: 704px;
-        margin-bottom: 12px;
-        background: whitesmoke;
-        position: relative;
+      
+      .td.current {
+        opacity: 0.5 !important;
       }
-
-      #progress-indicator {
-        height: 12px;
-        width: 20px;
+      
+      .tr.indicators .td {
+        -webkit-border-radius: 12px;
+        height: 8px;
+        width: 8px;
+        margin-left: 5px;
+      }
+      
+      .tr.indicators .td[title="1"] {
+        background: whitesmoke;
+      }
+      .tr.indicators .td[title="2"] {
+        background: #eee;
+      }
+      .tr.indicators .td[title="3"] {
+        background: #ddd;
+      }
+      .tr.indicators .td[title="4"] {
         background: #ccc;
-        position: absolute;
-        top: 0px;
-        left: 0px;
       }
 
     </style>
@@ -69,9 +77,9 @@
     <script>
 
   var values = [
-    [3, 0, 3, 0,    3, 0, 3, 0,   3, 0, 3, 0,   3, 0, 3, 0,     3, 0, 3, 0,    3, 0, 3, 0,   3, 0, 3, 0,   3, 0, 3, 0 ],
-    [0, 0, 0, 0,    0, 0, 4, 0,   0, 2, 0, 0,   0, 0, 4, 0,     0, 2, 0, 0,    4, 2, 0, 3,   0, 2, 2, 2,   0, 2, 2, 2 ],
-    [3, 0, 4, 0,    0, 0, 0, 0,   0, 0, 4, 0,   0, 0, 0, 0,     0, 0, 4, 0,    0, 0, 0, 0,   3, 0, 0, 0,   3, 0, 3, 0 ]
+    [4, 2, 4, 2,    4, 2, 4, 2,   4, 2, 4, 2,   4, 2, 4, 2,     4, 2, 4, 2,    4, 2, 4, 2,   2, 4, 2, 4,   2, 4, 2, 4 ],
+    [0, 0, 0, 0,    4, 0, 0, 4,   0, 4, 0, 0,   4, 0, 0, 4,     0, 0, 0, 0,    4, 0, 0, 4,   0, 0, 0, 0,   0, 0, 0, 4 ],
+    [4, 0, 4, 0,    0, 4, 0, 3,   4, 0, 4, 4,   0, 4, 0, 3,     4, 0, 4, 0,    0, 4, 0, 0,   3, 4, 0, 4,   0, 4, 0, 3 ]
   ];
 
     </script>
