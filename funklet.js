@@ -86,25 +86,35 @@ var listenForValuesFromRows = function(rows, values, limit) {
   });
 };
 
-var renderPatternIntoRows = function(pattern, rows) {};
+var listenForBpmChange = function(el, form) {
+  var updateBpm = function() {
+    setTimeout(function() {
+      var i = parseInt(el.value, 10);
+      if (i && i !== bpm) bpm = i;
+      el.value = bpm;
+    }, 0);
+  };
 
-var getMetronome = function(context, bpm, readCount, clickback) {
+  el.addEventListener("blur", updateBpm, true);
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    updateBpm();
+  });
+};
+
+var runCallbackWithMetronome = function(context, readCount, clickback) {
   var clickRate = (60 / bpm) / readCount;
-  var lastTime;
+  var lastTime = context.currentTime;
 
-  return function() {
+  return setInterval(function() {
     var current = context.currentTime;
 
-    if (!lastTime) {
-      lastTime = current + clickRate;
-      clickback(0);
-    } else {
-      if (current > lastTime + clickRate) {
-        lastTime += clickRate;
-        clickback(current - lastTime);
-      }
+    if (current > lastTime + clickRate) {
+      clickRate = (60 / bpm) / readCount;
+      lastTime += clickRate;
+      clickback(current - lastTime);
     }
-  };
+  }, 0);
 };
 
 
@@ -127,39 +137,46 @@ var volumes = {
   1: 0.15
 };
 
-var diagram = document.getElementById("diagram");
+var getElement = document.getElementById.bind(document);
+
+var diagram = getElement("diagram");
+var startButton = getElement("start");
+var stopButton = getElement("stop");
+
 var indicators = writeIndicatorsIntoTable(length+1, diagram);
 var rows = writeValuesIntoTable(values, diagram);
 listenForValuesFromRows(rows, values, 4);
+listenForBpmChange(getElement("bpm"), getElement("bpm-form"));
 
 var context = new webkitAudioContext();
 var names = ["hihat", "snare", "kick"];
 var bpm = 100;
 
 getBuffersFromSampleNames(names, context, function(buffers) {
+  playSampleWithBuffer(context, buffers.kick, 0, 0); // start the audio context
 
+  var interval;
   var i = 0;
-  var metronome = getMetronome(context, bpm, 4, function(lag) {
-    var last = ((i - 1) >= 0) ? (i-1) : length;
-    
-    var totalVolume = values.reduce(function(acc, row, j) {
-      var volume = row[i];
-      rows[j][last].className = "td";
-      rows[j][i].className = "td current";
-      (volume !== 0) && playSampleWithBuffer(context, buffers[names[j]], 0, volumes[volume]);
-      return acc + volume;
-    }, 0);
-    
-    indicators[i].title = Math.min(totalVolume, 4);
-    indicators[last].title = 0;
-    
-    i = (i === length) ? 0 : (i + 1);
-  });
 
-  setTimeout(function() {
-    playSampleWithBuffer(context, buffers.kick, 0, 0);
-    setInterval(metronome, 0);
-  }, 2000);
+  startButton.addEventListener("mouseup", function() {
+    interval = runCallbackWithMetronome(context, 4, function(lag) {
+      var last = ((i - 1) >= 0) ? (i-1) : length;
+
+      var totalVolume = values.reduce(function(acc, row, j) {
+        var volume = row[i];
+        rows[j][last].className = "td";
+        rows[j][i].className = "td current";
+        (volume !== 0) && playSampleWithBuffer(context, buffers[names[j]], 0, volumes[volume]);
+        return acc + volume;
+      }, 0);
+
+      i = (i === length) ? 0 : (i + 1);
+    });
+  }, true);
+
+  stopButton.addEventListener("mouseup", function() {
+    clearInterval(interval);
+  }, true);
 });
 
 

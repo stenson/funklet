@@ -24,6 +24,7 @@
         height: 12px;
         width: 20px;
         background: white;
+        opacity: 0.3;
       }
 
       .td[title="4"] {
@@ -41,18 +42,18 @@
       .td[title="1"] {
         background: lightblue;
       }
-      
+
       .td.current {
-        opacity: 0.5 !important;
+        opacity: 1.0 !important;
       }
-      
+
       .tr.indicators .td {
         -webkit-border-radius: 12px;
         height: 8px;
         width: 8px;
         margin-left: 5px;
       }
-      
+
       .tr.indicators .td[title="1"] {
         background: whitesmoke;
       }
@@ -70,10 +71,12 @@
   </head>
   <body>
     <div id="diagram">
-      <div id="progress-bar">
-        <div id="progress-indicator"></div>
-      </div>
     </div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <form id="bpm-form">
+      <input id="bpm" type="text" value="100"/>
+    </form>
     <script>
 
   var values = [
