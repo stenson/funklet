@@ -3,16 +3,8 @@
 var originals = copyArray(values);
 var length = values[0].length - 1;
 
-var volumes = {
-  4: 1,
-  3: 0.5,
-  2: 0.25,
-  1: 0.15
-};
-
-var getElement = document.getElementById.bind(document);
-
 // dom elements
+var getElement = document.getElementById.bind(document);
 var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
@@ -25,10 +17,15 @@ var bpm = { value: 100 };
 listenForBpmChange(bpm, getElement("bpm"), getElement("bpm-form"));
 
 var context = new webkitAudioContext();
-var names = ["hihat", "snare", "kick"];
 
-getBuffersFromSampleNames(names, context, function(buffers) {
-  playSampleWithBuffer(context, buffers.kick, 0, 0); // start the audio context
+var names = ["hat", "snare", "kick"];
+var individuals = names.map(function(base) {
+  return [1,2,3,4].map(function(i) { return base+""+i });
+}).reduce(function(a, b) { return a.concat(b) });
+console.log(individuals);
+
+getBuffersFromSampleNames(individuals, context, function(buffers) {
+  playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
 
   var interval;
   var i = 0;
@@ -41,7 +38,7 @@ getBuffersFromSampleNames(names, context, function(buffers) {
         var volume = row[i];
         rows[j][last].className = "td";
         rows[j][i].className = "td current";
-        (volume !== 0) && playSampleWithBuffer(context, buffers[names[j]], 0, volumes[volume]);
+        (volume !== 0) && playSampleWithBuffer(context, buffers[names[j]+""+volume], 0, 1);
         return acc + volume;
       }, 0);
 
