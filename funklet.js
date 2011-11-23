@@ -29,8 +29,8 @@ getBuffersFromSampleNames(individuals, context, function(buffers) {
 
   var interval;
   var i = 0;
-
-  startButton.addEventListener("mouseup", function() {
+  
+  var start = function() {
     interval = runCallbackWithMetronome(context, bpm, 4, function(lag) {
       var last = ((i - 1) >= 0) ? (i-1) : length;
 
@@ -44,9 +44,13 @@ getBuffersFromSampleNames(individuals, context, function(buffers) {
 
       i = (i === length) ? 0 : (i + 1);
     });
-  }, true);
-
-  stopButton.addEventListener("mouseup", function() {
+  };
+  
+  var stop = function() {
     clearInterval(interval);
-  }, true);
+  };
+
+  startButton.addEventListener("mouseup", start, true);
+  stopButton.addEventListener("mouseup", stop, true);
+  //window.addEventListener("blur", stop, true);
 });
