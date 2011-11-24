@@ -40,6 +40,7 @@ var playSampleWithBuffer = function(context, buffer, start, volume) {
   gainNode.connect(context.destination);
   gainNode.gain.value = volume;
   source.noteOn(start);
+  return source;
 };
 
 /* table writing */
@@ -53,8 +54,8 @@ var writeValueIntoCell = function(value, tr) {
   return td;
 };
 
-var writeValuesIntoRow = function(values, table) {
-  var tr = cabin("div.tr");
+var writeValuesIntoRow = function(values, table, name) {
+  var tr = cabin("div.tr."+name);
   table.appendChild(tr);
   return values.map(function(value) {
     return writeValueIntoCell(value, tr);
@@ -62,13 +63,13 @@ var writeValuesIntoRow = function(values, table) {
 };
 
 var writeValuesIntoTable = function(patterns, div) {
-  return patterns.map(function(values) {
-    return writeValuesIntoRow(values, div);
+  return patterns.map(function(values, i) {
+    return writeValuesIntoRow(values, div, names[i]);
   });
 };
 
-var writeIndicatorsIntoTable = function(length, div) {
-  var tr = cabin("div.tr.indicators");
+var writeModifiersIntoTable = function(length, div) {
+  var tr = cabin("div.tr.modifiers");
   var tds = [];
   for(var i = 0; i < length; i++) {
     tds.push(writeValueIntoCell(0, tr));
@@ -86,16 +87,29 @@ var listenForValuesFromRows = function(rows, values, limit) {
 
       td.addEventListener("mouseup", function(e) {
         var v = parseInt(td.getAttribute("volume"));
-
         setVolume(
           (e.metaKey || v === limit) ? 0
             : (e.altKey) ? limit : v + 1);
-
       }, true);
 
       td.addEventListener("mouseover", function(e) {
         e.shiftKey && setVolume(0);
       }, true);
+    });
+  });
+};
+
+var listenForModifiers = function(modifiers, values) {
+  modifiers.forEach(function(modifier, i) {
+    modifier.addEventListener("mouseup", function(e) {
+      var mod = modifier.getAttribute("modified");
+      if (modifier.getAttribute("modified")) {
+        modifiedValues[i] = undefined;
+        modifier.setAttribute("modified", false);
+      } else {
+        modifiedValues[i] = true;
+        modifier.setAttribute("modified", true);
+      }
     });
   });
 };

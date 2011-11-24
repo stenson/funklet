@@ -2,82 +2,235 @@
 <html>
   <head>
     <style>
+    
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: "Helvetica Neue", Arial, Helvetica;
+      }
+    
+      #container {
+        margin: auto auto;
+        width: 800px;
+        margin-top: 25px;
+      }
+      
+      #header {
+        background: url(images/clyde.jpg);
+        background-position: 200px -200px;
+        background-size: cover;
+        height: 325px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #ccc;
+      }
+      
+      #info {
+        width: 800px;
+        margin: auto auto;
+        padding-top: 25px;
+      }
+      
+      #header span {
+        background: rgba(0,0,0,0.8);
+        color: white;
+      }
+      
+      h2 {
+        font-weight: 34px;
+      }
+      h3 {
+        font-weight: 34px;
+        font-weight: normal;
+      }
+      
+      #diagram {
+        margin-top: 75px;
+        position: relative;
+      }
+      
+      .stub {
+        width: 15px;
+        height: 5px;
+        background: #333;
+        position: absolute;
+        top: 30px;
+      }
+      
+      #stub-left {
+        left: -15px;
+      }
+      
+      #stub-right {
+        right: -6px;
+      }
 
       .tr {
-        height: 24px;
+        height: 25px;
+      }
+      
+      .tr.modifiers {
+        height: 15px;
+      }
+      
+      .tr.hat {
+        height: 18px;
       }
 
       .td-holder {
-        height: 24px;
-        width: 20px;
-        border-right: 1px solid #ddd;
-        /*-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.3);*/
+        height: 25px;
+        width: 22px;
+        border-right: 1px solid #eee;
         float: left;
+      }
+      
+      .td-holder:nth-child(1) {
+        border-left: 5px solid #333;
+        padding-left: 1px;
       }
 
       .td-holder:nth-child(4n+4) {
-        border-right: 5px solid #ccc;
+        border-right: 5px solid #777 !important;
+        margin-right: 1px;
+        padding-right: 1px;
+      }
+
+      .td-holder:nth-child(16),
+      #decoration {
+        border-right: 7px solid #333 !important;
+      }
+      
+      .td-holder:nth-child(32) {
+        border-color: #333 !important;
+      }
+      
+      #decoration {
+        width: 392px;
+        height: 30px;
+      }
+      
+      .kick .td-holder {
+        height: 35px !important;
+      }
+      
+      .hat .td-holder {
+        height: 18px !important;
+      }
+      
+      .hat .td {
+        margin-top: 0px;
+      }
+      
+      .kick .td {
+        margin-top: 17px;
       }
 
       .td {
-        margin-top: 12px;
-        height: 12px;
-        width: 20px;
+        margin-top: 7px;
+        height: 18px;
+        width: 22px;
         background: white;
         opacity: 0.4;
-/*        -webkit-box-shadow: 0 0 7px rgba(0,0,0,0.3);*/
+        cursor: pointer;
+        -webkit-transition: opacity 0.15s linear;
+      }
+
+      .td:hover {
+        background: #ccc;
+        opacity: 0.8;
+        -webkit-transition: none !important;
       }
 
       .td[volume="4"] {
         background: rgb(215, 0, 24);
+        -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
       }
 
       .td[volume="3"] {
         background: orange;
+        -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
       }
 
       .td[volume="2"] {
         background: rgb(147, 218, 117);
+        -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
       }
 
       .td[volume="1"] {
         background: lightblue;
+        -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
       }
 
       .td.current {
         opacity: 1.0 !important;
+        -webkit-transition: none !important;
       }
 
-      .tr.indicators .td {
+      .tr.modifiers .td {
         -webkit-border-radius: 12px;
-        height: 8px;
-        width: 8px;
+        height: 11px;
+        width: 11px;
         margin-left: 5px;
-      }
-
-      .tr.indicators .td[volume="1"] {
+        margin-top: 0px;
         background: whitesmoke;
       }
-      .tr.indicators .td[volume="2"] {
-        background: #eee;
+      
+      .tr.modifiers .td-holder {
+        height: 15px;
+        border-right-color: white;
       }
-      .tr.indicators .td[volume="3"] {
-        background: #ddd;
+
+      .tr.modifiers .td[modified="true"] {
+        background: #333;
       }
-      .tr.indicators .td[volume="4"] {
-        background: #ccc;
+
+      #controls {
+        margin-top:50px;
+        color: #777;
+      }
+      
+      .control {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #333;
+      }
+      
+      #bpm {
+        width: 50px;
+        font-family: "Helvetica Neue", ;
+        font-size: 24px;
+        color: #333;
+        border: none;
+        text-align: center;
       }
 
     </style>
   </head>
   <body>
-    <div id="diagram">
+    <div id="header">
+      <div id="info">
+        <h1 id="name"><span>Clyde Stubblefield</span></h1>
+        <div id="song">
+          <h2><span>Mother Popcorn</span></h2>
+          <h3><span>James Brown</span></h3>
+          <h3><span>1969</span></h3>
+        </div>
+      </div>
     </div>
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-    <form id="bpm-form">
-      <input id="bpm" type="text" value="100"/>
-    </form>
+    <div id="container">
+      <div id="diagram">
+        <div id="decoration"></div>
+        <div id="stub-left" class="stub"></div>
+        <div id="stub-right" class="stub"></div>
+      </div>
+      <div id="controls">
+        <form id="bpm-form">
+          <button class="control" id="start">&#9654;</button>
+          <button class="control" id="stop">&#9724;</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="110"/><span>BPM</span>
+        </form>
+      </div>
+    </div>
     <script>
 
   var values = [
@@ -85,12 +238,30 @@
     [0, 1, 0, 1, 4, 1, 0, 1, 0, 1, 0, 1, 4, 1, 0, 1, 0, 2, 0, 1, 4, 2, 0, 1, 0, 2, 0, 1, 4, 1, 0, 1],
     [4, 0, 0, 4, 0, 0, 4, 4, 0, 0, 4, 4, 0, 3, 0, 3, 4, 0, 4, 4, 0, 0, 0, 4, 4, 0, 4, 4, 0, 3, 0, 3]
   ];
+
+  var values = [
+    [4, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 4, 0]
+  ];
+  
+  var values = [
+    [3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 3, 2, 0, 2, 0, 4, 0, 2, 3, 2, 0, 2],
+    [4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0]
+  ];
   
   // var values = [
-  //   [4, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
-  //   [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
-  //   [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 4, 0]
+  //   [4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 4, 0, 4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 4, 0],
+  //   [0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 3, 0, 2, 0, 2, 4, 0, 0, 0],
+  //   [0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 3, 4, 0, 3, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0]
   // ];
+  
+  // var values = [
+  //   [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0],
+  //   [0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 4, 2, 0, 3, 0, 2, 2, 2, 0, 2, 2, 2],
+  //   [3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3, 0]
+  //];
 
     </script>
     <script src="cabin.js"></script>
