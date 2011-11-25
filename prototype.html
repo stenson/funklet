@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style/style.css"/>
+  </head>
+  <body>
+    <div id="funklet-bar">
+      <a href="/">The Funklet</a>
+    </div>
+    <div id="header">
+      <div id="info">
+        <h1 id="name"><span>Clyde Stubblefield</span></h1>
+        <div id="song">
+          <h2><span>Mother Popcorn</span></h2>
+          <h3><span>James Brown</span></h3>
+          <h3><span>1969</span></h3>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="diagram-container">
+        <div id="diagram">
+          <div id="decoration"></div>
+          <div id="stub-left" class="stub"></div>
+          <div id="stub-right" class="stub"></div>
+        </div>
+        <div id="controls">
+          <form id="bpm-form">
+            <button class="control" id="start">&#9654;</button>
+            <button class="control" id="stop">&#9724;</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="120"/><span>BPM</span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="text">
+      <p>Most funky field trips makes a stop at this landmark beat.</p>
+      <p>Clyde started a new type of groove by playing quarter notes on the hi-hat. It gives the groove a jerky, all-broke-up feel.</p>
+      <p>This innovation wasn&rsquo;t a highly concious decision; Clyde just went in the studio and started up a groove.</p>
+      <p>Because of the quarters on the hat, the kick and snare part sound totally fresh, even though it is similar to some past Stubblefield grooves.</p>
+      <p>It&rsquo;s fun to ballpark the dates of funk tracks based on hi-hat parts. Invite over some friends, order some pizza and try it sometime.</p>
+    </div>
+    <script>
+
+  var values = [
+    [4, 0, 2, 1, 4, 0, 2, 1, 4, 0, 2, 4, 2, 0, 2, 1, 4, 0, 1, 4, 2, 0, 1, 3, 4, 0, 1, 4, 2, 0, 1, 1],
+    [0, 1, 0, 1, 4, 1, 0, 1, 0, 1, 0, 1, 4, 1, 0, 1, 0, 2, 0, 1, 4, 2, 0, 1, 0, 2, 0, 1, 4, 1, 0, 1],
+    [4, 0, 0, 4, 0, 0, 4, 4, 0, 0, 4, 4, 0, 3, 0, 3, 4, 0, 4, 4, 0, 0, 0, 4, 4, 0, 4, 4, 0, 3, 0, 3]
+  ];
+
+  var values = [
+    [4, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 4, 0]
+  ];
+  
+  var values = [
+    [3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 3, 2, 0, 2, 0, 4, 0, 2, 3, 2, 0, 2],
+    [4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0]
+  ];
+  
+  // var values = [
+  //   [4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 4, 0, 4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 3, 0, 4, 0, 4, 0],
+  //   [0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 3, 0, 2, 0, 2, 4, 0, 0, 0],
+  //   [0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 3, 4, 0, 3, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0]
+  // ];
+  
+  // var values = [
+  //   [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0],
+  //   [0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 4, 2, 0, 3, 0, 2, 2, 2, 0, 2, 2, 2],
+  //   [3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3, 0]
+  //];
+  
+  // var values = [
+  //   [0, 2, 4, 0, 1, 4, 0, 1, 4, 0, 1, 0, 0, 2, 1, 4, 0, 2, 4, 0, 2, 4, 0, 2, 4, 0, 1, 0, 0, 2, 1, 4],
+  //   [0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 1, 0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 1],
+  //   [4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0]
+  // ];
+  
+  // var values = [
+  //   [4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2],
+  //   [0, 0, 0, 0, 4, 0, 0, 2, 0, 4, 0, 4, 0, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 2, 0, 4, 0, 2, 4, 0, 0, 0],
+  //   [4, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 4, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0]
+  // ];
+  // 
+  // var values = [
+  //   [4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0],
+  //   [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0],
+  //   [4, 0, 4, 0, 0, 0, 0, 4, 0, 4, 4, 4, 0, 0, 0, 3, 4, 0, 4, 0, 0, 0, 0, 4, 0, 4, 4, 4, 0, 0, 0, 3]
+  // ];
+
+    </script>
+    <script src="cabin.js"></script>
+    <script src="functions.js"></script>
+    <script src="funklet.js"></script>
+  </body>
+</html>

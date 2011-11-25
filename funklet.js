@@ -8,6 +8,7 @@ var getElement = document.getElementById.bind(document);
 var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
+var bpmMeter = getElement("bpm");
 
 var names = ["hat", "snare", "kick"];
 var buildNames = function(a, b) {
@@ -20,11 +21,11 @@ var sampleNames = buildNames("hat", [1,2,3,4,5,6,7,8])
 var modifiers = writeModifiersIntoTable(length+1, diagram);
 var modifiedValues = [];
 var rows = writeValuesIntoTable(values, diagram, names);
-var bpm = { value: 110 };
+var bpm = { value: parseInt(bpmMeter.value, 10) };
 
 listenForModifiers(modifiers, modifiedValues, 4);
 listenForValuesFromRows(rows, values, 4);
-listenForBpmChange(bpm, getElement("bpm"), getElement("bpm-form"));
+listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
 
 var context = new webkitAudioContext();
 var outstandingOpen = null;
@@ -37,6 +38,8 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   
   var start = function() {
     interval = runCallbackWithMetronome(context, bpm, 4, function(lag) {
+      if (lag > 0.5) stop();
+      
       var last = ((i - 1) >= 0) ? (i-1) : length;
 
       values.forEach(function(row, j) {

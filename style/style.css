@@ -1,0 +1,254 @@
+
+  * {
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, Helvetica;
+  }
+  
+  body {
+    overflow-y: scroll;
+  }
+  
+  #funklet-bar {
+    background: white;
+    height: 45px;
+    position: relative;
+    width: 820px;
+    margin: auto auto;
+  }
+  
+  #funklet-bar a {
+    font-size: 12px;
+    color: red;
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: bold;
+  }
+
+  #container {
+    padding-top: 45px;
+    border-bottom: 1px solid #eee;
+    background: white;
+    height: 230px;
+  }
+  
+  #header {
+    background: url(../images/clyde.jpg);
+    background-position: 200px -200px;
+    background-size: cover;
+    height: 275px;
+    text-transform: uppercase;
+    position: relative;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.4);
+  }
+  
+  #info {
+    width: 820px;
+    margin: auto auto;
+    padding-top: 25px;
+  }
+  
+  #header span {
+    background: rgba(0,0,0,0.8);
+    color: white;
+  }
+  
+  h1 {
+    font-size: 45px;
+  }
+  
+  h2 {
+    font-size: 31px;
+  }
+  h3 {
+    font-size: 21px;
+    font-weight: normal;
+  }
+  
+  #diagram-container {
+    width: 800px;
+    margin: auto auto;
+  }
+  
+  #diagram {
+    position: relative;
+    height: 115px;
+  }
+  
+  .stub {
+    width: 15px;
+    height: 5px;
+    background: #333;
+    position: absolute;
+    top: 30px;
+  }
+  
+  #stub-left {
+    left: -15px;
+  }
+  
+  #stub-right {
+    right: -6px;
+  }
+
+  .tr {
+    height: 25px;
+  }
+  
+  .tr.modifiers {
+    height: 15px;
+  }
+  
+  .tr.hat {
+    height: 18px;
+  }
+
+  .td-holder {
+    height: 25px;
+    width: 22px;
+    border-right: 1px solid #eee;
+    float: left;
+  }
+  
+  .td-holder:nth-child(1) {
+    border-left: 5px solid #333;
+    padding-left: 1px;
+  }
+
+  .td-holder:nth-child(4n+4) {
+    border-right: 5px solid #777 !important;
+    margin-right: 1px;
+    padding-right: 1px;
+  }
+
+  .td-holder:nth-child(16),
+  #decoration {
+    border-right: 7px solid #333 !important;
+  }
+  
+  .td-holder:nth-child(32) {
+    border-color: #333 !important;
+  }
+  
+  #decoration {
+    width: 392px;
+    height: 30px;
+  }
+  
+  .kick .td-holder {
+    height: 35px !important;
+  }
+  
+  .hat .td-holder {
+    height: 18px !important;
+  }
+  
+  .hat .td {
+    margin-top: 0px;
+  }
+  
+  .kick .td {
+    margin-top: 17px;
+  }
+
+  .td {
+    margin-top: 7px;
+    height: 18px;
+    width: 22px;
+    background: white;
+    opacity: 0.4;
+    cursor: pointer;
+    -webkit-transition: opacity 0.15s linear;
+  }
+
+  .td:hover {
+    background: #ccc;
+    opacity: 0.8;
+    -webkit-transition: none !important;
+  }
+
+  .td[volume="4"] {
+    background: rgb(215, 0, 24);
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+  }
+
+  .td[volume="3"] {
+    background: orange;
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+  }
+
+  .td[volume="2"] {
+    background: rgb(147, 218, 117);
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+  }
+
+  .td[volume="1"] {
+    background: lightblue;
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+  }
+
+  .td.current {
+    opacity: 1.0 !important;
+    -webkit-transition: none !important;
+  }
+
+  .tr.modifiers .td {
+    -webkit-border-radius: 12px;
+    height: 11px;
+    width: 11px;
+    margin-left: 5px;
+    margin-top: 0px;
+    background: whitesmoke;
+  }
+  
+  .tr.modifiers .td-holder {
+    height: 15px;
+    border-right-color: white;
+  }
+
+  .tr.modifiers .td[modified="true"] {
+    background: #333;
+  }
+
+  #controls {
+    margin-top:50px;
+    color: #777;
+  }
+  
+  .control {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  #bpm {
+    width: 50px;
+    font-family: "Helvetica Neue", ;
+    font-size: 24px;
+    color: #333;
+    border: none;
+    text-align: center;
+  }
+  
+  #text {
+    width: 800px;
+    margin: auto auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  #text p {
+    font-family: Georgia, serif;
+    width: 493px;
+    color: rgb(34, 34, 34);
+    font-size: 16px;
+    line-height: 25px;
+    text-indent: 15px;
+    margin-bottom: 15px;
+  }
+  
+  #text p:first-child:first-line {
+    font-variant: small-caps;
+    font-size: 18px;
+  }
