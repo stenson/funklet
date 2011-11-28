@@ -20,7 +20,7 @@ var getBuffersFromSampleNames = function(names, context, callback) {
   var queue = 0;
 
   names.map(function(name) {
-    var url = ["sounds/", name, ".wav"].join("");
+    var url = ["/sounds/", name, ".wav"].join("");
     queue++;
     loadSampleWithUrl(context, url, function(buffer) {
       buffers[name] = buffer;

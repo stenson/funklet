@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>The Funklet</title>
+ <link href="http://funklet.com/atom.xml" rel="self"/>
+ <link href="http://funklet.com/"/>
+ <updated>2011-11-27T18:01:31-08:00</updated>
+ <id>http://funklet.com/</id>
+ <author>
+   <name>Jack Stratton</name>
+   <email>stratton.jack@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Hot Sweat</title>
+   <link href="http://funklet.com/hot-sweat"/>
+   <updated>2011-11-25T00:00:00-08:00</updated>
+   <id>http://funklet.com/hot-sweat</id>
+   <content type="html">&lt;p&gt;Purdie&amp;rsquo;s take on Stubblefield&amp;rsquo;s &amp;ldquo;Cold Sweat.&amp;rdquo;&lt;/p&gt;
+&lt;script&gt;
+  var values = [
+    [4, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 4, 0]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Come Dancing</title>
+   <link href="http://funklet.com/come-dancing"/>
+   <updated>2011-11-25T00:00:00-08:00</updated>
+   <id>http://funklet.com/come-dancing</id>
+   <content type="html">&lt;p&gt;Narada wrote this tune. Wilbur Bascomb&amp;rsquo;s bass playing will break your neck.&lt;/p&gt;
+&lt;p&gt;(If you want to hear Wilbur and Purdie lock up, check out &lt;em&gt;Hair: Original Soundtrack Recording&lt;/em&gt; &amp;mdash; the soundtrack from the movie version of &lt;em&gt;Hair&lt;/em&gt;.)&lt;/p&gt;
+&lt;p&gt;This particular pattern only happens during the drum intro.&lt;/p&gt;
+&lt;p&gt;Graphically, it&amp;rsquo;s one of the mroe symmetrical patterns. However, when playing it, rather than thinking about the symmetry or the clever dialog between kick and snare, you should imagine an overweight Daffy Duck grumblign his way into a strip club.&lt;/p&gt;
+&lt;p&gt;This imagery has helped a lot of my students nail the swing of this groove.&lt;/p&gt;
+&lt;script&gt;
+  var values = [
+    [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 4, 0, 3, 0, 3, 0],
+    [0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 0, 0, 4, 2, 0, 0, 0, 4, 0, 0, 4, 2, 2, 0],
+    [4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Cissy Strut</title>
+   <link href="http://funklet.com/cissy-strut"/>
+   <updated>2011-11-03T00:00:00-07:00</updated>
+   <id>http://funklet.com/cissy-strut</id>
+   <content type="html">&lt;p&gt;Fact: Zigaboo used two hands on the hat when recording “Cissy Strut.”&lt;/p&gt;
+&lt;p&gt;Among drummers, that factoid is becoming as ubiquitous as “White Christmas was written by a Jew!”&lt;/p&gt;
+&lt;p&gt;Still, when I first got the memo, everything got a little lighter.&lt;/p&gt;
+&lt;p&gt;It never crossed my mind Zig could be using two hands on the hat.  Plus, he was breaking one of Gabriel Roth’s (Daptone Records) rules: Never use two hands on the hat unless you are actually in Ghana and it’s still 1970.&lt;/p&gt;
+&lt;p&gt;After I got remotely schooled by Stanton Moore’s book, the groove felt better.&lt;/p&gt;
+&lt;p&gt;That said, it’s still fun to play with one hand.&lt;/p&gt;
+&lt;script&gt;
+  var values = [
+    [0, 4, 3, 0, 4, 0, 3, 4, 0, 4, 3, 0, 4, 0, 4, 0, 0, 4, 3, 0, 4, 0, 3, 4, 0, 4, 3, 0, 4, 0, 4, 0],
+    [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0],
+    [4, 0, 0, 4, 0, 4, 0, 0, 3, 4, 0, 4, 0, 4, 0, 0, 4, 0, 0, 4, 0, 4, 0, 0, 3, 4, 0, 4, 0, 4, 0, 0]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Mother Popcorn</title>
+   <link href="http://funklet.com/mother-popcorn"/>
+   <updated>2011-11-02T00:00:00-07:00</updated>
+   <id>http://funklet.com/mother-popcorn</id>
+   <content type="html">&lt;p&gt;Most funky field trips makes a stop at this landmark beat.&lt;/p&gt;
+&lt;p&gt;Clyde started a new type of groove by playing quarter notes on the hi-hat. It gives the groove a jerky, all-broke-up feel.&lt;/p&gt;
+&lt;p&gt;This innovation wasn&amp;rsquo;t a highly concious decision; Clyde just went in the studio and started up a groove.&lt;/p&gt;
+&lt;p&gt;Because of the quarters on the hat, the kick and snare part sound totally fresh, even though it is similar to some past Stubblefield grooves.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s fun to ballpark the dates of funk tracks based on hi-hat parts. Invite over some friends, order some pizza and try it sometime.&lt;/p&gt;
+&lt;script&gt;
+  var values = [
+    [3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 3, 2, 0, 2, 0, 4, 0, 2, 3, 2, 0, 2],
+    [4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>I Got the Feelin'</title>
+   <link href="http://funklet.com/i-got-the-feelin"/>
+   <updated>2011-11-01T00:00:00-07:00</updated>
+   <id>http://funklet.com/i-got-the-feelin</id>
+   <content type="html">&lt;p&gt;As a kid, I saw pictures of James Brown on stage with two drummers.  That was cool, and it let me off the hook when I couldn’t play the grooves from the records.  I figured, “If I can get close to the original using only four limbs, that’s pretty good.”&lt;/p&gt;
+&lt;p&gt;Turns out it was four limbs playing those grooves.  Clyde Stubblefield’s four limbs.&lt;/p&gt;
+&lt;p&gt;I wasn’t the only one fooled.  When “I Got the Feelin’” dropped, drummers everywhere retreated to their basements.&lt;/p&gt;
+&lt;p&gt;It’s Clyde’s fast left hand that makes him sound like two drummers.&lt;/p&gt;
+&lt;p&gt;His groups of three 16th notes on the snare are funky and righteously difficult.&lt;/p&gt;
+&lt;p&gt;Trying to make his grooves happen — even at slow tempos — takes time, repetition and repetition.&lt;/p&gt;
+&lt;script&gt;
+  var values = [
+    [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0],
+    [0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 4, 2, 0, 3, 0, 2, 1, 2, 0, 2, 2, 1],
+    [3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3, 0]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ 
+</feed>

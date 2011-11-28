@@ -1,0 +1,3 @@
+auto: true
+exclude: "README.txt"
+permalink: /:title

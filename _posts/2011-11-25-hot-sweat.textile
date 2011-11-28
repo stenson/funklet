@@ -1,0 +1,20 @@
+---
+layout: post
+who: "Bernard Purdie"
+title: "Hot Sweat"
+act: "Master Drummers Volume 1"
+year: "1996"
+bpm: "110"
+image: "purdie.jpg"
+position: "0px -350px"
+---
+
+<p>Purdie&rsquo;s take on Stubblefield&rsquo;s &ldquo;Cold Sweat.&rdquo;</p>
+
+<script>
+  var values = [
+    [4, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
+    [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 4, 0]
+  ];
+</script>

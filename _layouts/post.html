@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<div id="funklet-bar">
+  <a href="/">The Funklet</a>
+</div>
+<div id="header" style="background-image:url(/images/{{ page.image }}); background-position:{{ page.position }}">
+  <div id="info">
+    <h1 id="name"><span>{{ page.who }}</span></h1>
+    <div id="song">
+      <h2><span>{{ page.title }}</span></h2>
+      <h3><span>{{ page.act }}</span></h3>
+      <h3><span>{{ page.year }}</span></h3>
+    </div>
+  </div>
+</div>
+<div id="container">
+  <div id="diagram-container">
+    <div id="diagram">
+      <div id="decoration"></div>
+      <div id="stub-left" class="stub"></div>
+      <div id="stub-right" class="stub"></div>
+    </div>
+    <div id="controls">
+      <form id="bpm-form">
+        <button class="control" id="start">&#9654;</button>
+        <button class="control" id="stop">&#9724;</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="{{ page.bpm }}"/><span>BPM</span>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="text">
+  {{ content }}
+</div>
+<script src="/script/cabin.js"></script>
+<script src="/script/functions.js"></script>
+<script src="/script/funklet.js"></script>
