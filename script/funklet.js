@@ -20,8 +20,6 @@ var sampleNames = (["foothat"])
   .concat(buildNames("snare", [1,2,3,4]))
   .concat(buildNames("kick",  [1,2,3,4]));
 
-console.log(sampleNames);
-
 var modifiers = writeModifiersIntoTable(length+1, diagram);
 var modifiedValues = [];
 var rows = writeValuesIntoTable(values, diagram, names);
@@ -33,10 +31,8 @@ listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
 
 var context = new webkitAudioContext();
 var outstandingOpen = null;
-var bs;
 
 getBuffersFromSampleNames(sampleNames, context, function(buffers) {
-  bs = buffers;
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
 
   var interval;
