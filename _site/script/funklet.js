@@ -14,9 +14,13 @@ var names = ["hat", "snare", "kick"];
 var buildNames = function(a, b) {
   return b.map(function(i) { return a+""+i })
 };
-var sampleNames = buildNames("hat", [1,2,3,4,5,6,7,8])
+var sampleNames = (["foothat"])
+  .concat(buildNames("hat",   [1,2,3,4]))  
+  .concat(buildNames("ohat",  [1,2,3,4]))
   .concat(buildNames("snare", [1,2,3,4]))
-  .concat(buildNames("kick", [1,2,3,4]));
+  .concat(buildNames("kick",  [1,2,3,4]));
+
+console.log(sampleNames);
 
 var modifiers = writeModifiersIntoTable(length+1, diagram);
 var modifiedValues = [];
@@ -29,8 +33,10 @@ listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
 
 var context = new webkitAudioContext();
 var outstandingOpen = null;
+var bs;
 
 getBuffersFromSampleNames(sampleNames, context, function(buffers) {
+  bs = buffers;
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
 
   var interval;
@@ -48,11 +54,15 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
         rows[j][last].className = "td";
         rows[j][i].className = "td current";
         var buffer = buffers[prefix+""+volume];
-        j === 0 && volume !== 0 && outstandingOpen && outstandingOpen.noteOff(0);
+        if (j === 0 && volume !== 0 && outstandingOpen) {
+          outstandingOpen.noteOff(0);
+          outstandingOpen = null;
+          playSampleWithBuffer(context, buffers.foothat, 0, 1);
+        }
         
         if (j === 0 && modifiedValues[i] && volume !== 0) {
-          buffer = buffers[prefix+""+(volume+4)];
-          outstandingOpen = playSampleWithBuffer(context, buffer, 0, 0.65);
+          buffer = buffers["o"+prefix+""+volume];
+          outstandingOpen = playSampleWithBuffer(context, buffer, 0, 0.85);
         } else {
           (volume !== 0) && playSampleWithBuffer(context, buffer, 0, 1);
         }
