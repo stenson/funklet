@@ -68,11 +68,15 @@ var writeValuesIntoTable = function(patterns, div) {
   });
 };
 
-var writeModifiersIntoTable = function(length, div) {
+var writeModifiersIntoTable = function(length, div, modifiedValues, hats) {
   var tr = cabin("div.tr.modifiers");
   var tds = [];
   for(var i = 0; i < length; i++) {
-    tds.push(writeValueIntoCell(0, tr));
+    var td = writeValueIntoCell(0, tr);
+    td.appendChild(cabin("span.plus", "+"));
+    td.setAttribute("stick", hats[i] > 0);
+    td.setAttribute("modified", modifiedValues[i]);
+    tds.push(td);
   }
   div.appendChild(tr);
   return tds;
@@ -80,16 +84,17 @@ var writeModifiersIntoTable = function(length, div) {
 
 /* listening for value changes */
 
-var listenForValuesFromRows = function(rows, values, limit) {
+var listenForValuesFromRows = function(rows, values, limit, modifiers) {
   rows.forEach(function(tr, i) {
     tr.forEach(function(td, j) {
-      var setVolume = function(volume) { td.setAttribute("volume", values[i][j] = volume) };
+      var setVolume = function(volume) {
+        td.setAttribute("volume", values[i][j] = volume);
+        i === 0 && modifiers[j].setAttribute("stick", volume > 0);
+      };
 
       td.addEventListener("mouseup", function(e) {
         var v = parseInt(td.getAttribute("volume"));
-        setVolume(
-          (e.metaKey || v === limit) ? 0
-            : (e.altKey) ? limit : v + 1);
+        setVolume((e.metaKey || v === limit) ? 0 : (e.altKey) ? limit : v + 1);
       }, true);
 
       td.addEventListener("mouseover", function(e) {
@@ -99,17 +104,15 @@ var listenForValuesFromRows = function(rows, values, limit) {
   });
 };
 
-var listenForModifiers = function(modifiers, values) {
+var listenForModifiers = function(modifiers, modifiedValues, values) {
   modifiers.forEach(function(modifier, i) {
+    var setValue = function(v) {
+      modifiedValues[i] = v;
+      modifier.setAttribute("modified", v);
+    };
+    
     modifier.addEventListener("mouseup", function(e) {
-      var mod = modifier.getAttribute("modified");
-      if (modifier.getAttribute("modified")) {
-        modifiedValues[i] = undefined;
-        modifier.setAttribute("modified", false);
-      } else {
-        modifiedValues[i] = true;
-        modifier.setAttribute("modified", true);
-      }
+      setValue(parseInt(modifier.getAttribute("modified"), 10) > 0 ? 0 : 1);
     });
   });
 };
@@ -124,7 +127,7 @@ var listenForBpmChange = function(bpm, el, form) {
   };
 
   el.addEventListener("blur", updateBpm, true);
-
+  
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     updateBpm();

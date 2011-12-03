@@ -16,6 +16,7 @@ position: "0px -250px"
 <p>This imagery has helped a lot of my students nail the swing of this groove.</p>
 
 <script>
+  var mods = [[6,2]];
   var values = [
     [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 4, 0, 3, 0, 3, 0],
     [0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 0, 0, 4, 2, 0, 0, 0, 4, 0, 0, 4, 2, 2, 0],

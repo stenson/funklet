@@ -4,7 +4,7 @@
  <title>The Funklet</title>
  <link href="http://funklet.com/atom.xml" rel="self"/>
  <link href="http://funklet.com/"/>
- <updated>2011-12-02T09:04:15-08:00</updated>
+ <updated>2011-12-03T14:31:35-08:00</updated>
  <id>http://funklet.com/</id>
  <author>
    <name>Jack Stratton</name>
@@ -13,12 +13,33 @@
 
  
  <entry>
+   <title>Str Bts DC Gogo 100</title>
+   <link href="http://funklet.com/the-unknown-drummer"/>
+   <updated>2011-11-20T00:00:00-08:00</updated>
+   <id>http://funklet.com/the-unknown-drummer</id>
+   <content type="html">&lt;p&gt;Welcome to the Tomb of the Unknowns.&lt;/p&gt;
+&lt;p&gt;I was listening to a friend’s remix and heard a funky drum break.  I asked if he knew where the break was from, and he said it was part of a library of loops he bought.  He sent me the 1-bar cut.&lt;/p&gt; 
+&lt;p&gt;I Shazamed it.  I played it for some funky friends.  No one had any leads.&lt;/p&gt;
+&lt;p&gt;Between poor crediting (common during the sixties and seventies) and nameless loop libraries, it has become difficult to identify who played some of the funkiest beats.&lt;/p&gt;
+&lt;p&gt;We shall call this beat by its file name: &lt;em&gt;Strt Bts DC Gogo 100.&lt;/em&gt;&lt;/p&gt;
+&lt;script&gt;
+  var mods = [ [2,0], [2,2], [6,0], [6,2] ];
+  var values = [
+    [0, 2, 4, 0, 2, 4, 0, 2, 4, 0, 0, 0, 0, 2, 2, 4, 0, 2, 4, 0, 2, 4, 0, 2, 4, 0, 0, 0, 0, 2, 2, 4],
+    [0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 1, 0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 1],
+    [4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>Hot Sweat</title>
    <link href="http://funklet.com/hot-sweat"/>
-   <updated>2011-11-25T00:00:00-08:00</updated>
+   <updated>2011-11-17T00:00:00-08:00</updated>
    <id>http://funklet.com/hot-sweat</id>
    <content type="html">&lt;p&gt;Purdie&amp;rsquo;s take on Stubblefield&amp;rsquo;s &amp;ldquo;Cold Sweat.&amp;rdquo;&lt;/p&gt;
 &lt;script&gt;
+  var mods = [];
   var values = [
     [4, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
     [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
@@ -30,7 +51,7 @@
  <entry>
    <title>Come Dancing</title>
    <link href="http://funklet.com/come-dancing"/>
-   <updated>2011-11-25T00:00:00-08:00</updated>
+   <updated>2011-11-16T00:00:00-08:00</updated>
    <id>http://funklet.com/come-dancing</id>
    <content type="html">&lt;p&gt;Narada wrote this tune. Wilbur Bascomb&amp;rsquo;s bass playing will break your neck.&lt;/p&gt;
 &lt;p&gt;(If you want to hear Wilbur and Purdie lock up, check out &lt;em&gt;Hair: Original Soundtrack Recording&lt;/em&gt; &amp;mdash; the soundtrack from the movie version of &lt;em&gt;Hair&lt;/em&gt;.)&lt;/p&gt;
@@ -38,10 +59,30 @@
 &lt;p&gt;Graphically, it&amp;rsquo;s one of the mroe symmetrical patterns. However, when playing it, rather than thinking about the symmetry or the clever dialog between kick and snare, you should imagine an overweight Daffy Duck grumblign his way into a strip club.&lt;/p&gt;
 &lt;p&gt;This imagery has helped a lot of my students nail the swing of this groove.&lt;/p&gt;
 &lt;script&gt;
+  var mods = [[6,2]];
   var values = [
     [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 4, 0, 3, 0, 3, 0],
     [0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 0, 0, 4, 2, 0, 0, 0, 4, 0, 0, 4, 2, 2, 0],
     [4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3]
+  ];
+&lt;/script&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Use Me</title>
+   <link href="http://funklet.com/use-me"/>
+   <updated>2011-11-11T00:00:00-08:00</updated>
+   <id>http://funklet.com/use-me</id>
+   <content type="html">&lt;p&gt;Grooving is a spiritual thing for James Gadson.&lt;/p&gt;
+&lt;p&gt;On this track, the band grooved for about ten minutes straight.  After that, Bill Withers put down his vocal part and the engineer manufactured a breakdown by soloing vocals and drums for certain sections.&lt;/p&gt;
+&lt;p&gt;If you listen closely, you can hear the bass bleeding into the drum mics during the breakdowns.&lt;/p&gt;
+&lt;p&gt;I dig this work-flow.  When the album version starts, the musicians have already been deep in the groove for a few minutes.&lt;/p&gt;
+&lt;script&gt;
+  var mods = [ [6,1], [6,3], [7,1] ];
+  var values = [
+    [4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 2, 4, 2, 4, 2, 4, 2, 4],
+    [0, 0, 0, 0, 4, 0, 0, 4, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 4, 4, 0, 4, 0, 3, 4, 0, 4, 0, 0, 4, 0, 0, 3, 4, 0, 4, 0, 4, 0, 3]
   ];
 &lt;/script&gt;</content>
  </entry>
@@ -58,6 +99,7 @@
 &lt;p&gt;After I got remotely schooled by Stanton Moore’s book, the groove felt better.&lt;/p&gt;
 &lt;p&gt;That said, it’s still fun to play with one hand.&lt;/p&gt;
 &lt;script&gt;
+  var mods = [];
   var values = [
     [0, 4, 3, 0, 4, 0, 3, 4, 0, 4, 3, 0, 4, 0, 4, 0, 0, 4, 3, 0, 4, 0, 3, 4, 0, 4, 3, 0, 4, 0, 4, 0],
     [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0],
@@ -77,6 +119,7 @@
 &lt;p&gt;Because of the quarters on the hat, the kick and snare part sound totally fresh, even though it is similar to some past Stubblefield grooves.&lt;/p&gt;
 &lt;p&gt;It&amp;rsquo;s fun to ballpark the dates of funk tracks based on hi-hat parts. Invite over some friends, order some pizza and try it sometime.&lt;/p&gt;
 &lt;script&gt;
+  var mods = [];
   var values = [
     [3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0],
     [0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 2, 3, 2, 0, 2, 0, 4, 0, 2, 3, 2, 0, 2],
@@ -97,6 +140,7 @@
 &lt;p&gt;His groups of three 16th notes on the snare are funky and righteously difficult.&lt;/p&gt;
 &lt;p&gt;Trying to make his grooves happen — even at slow tempos — takes time, repetition and repetition.&lt;/p&gt;
 &lt;script&gt;
+  var mods = [ [0,2], [2,2], [6,0] ];
   var values = [
     [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0],
     [0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 4, 2, 0, 3, 0, 2, 1, 2, 0, 2, 2, 1],

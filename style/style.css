@@ -230,10 +230,31 @@
   .tr.modifiers .td-holder {
     height: 15px;
     border-right-color: white;
+    font-weight: bold;
   }
-
-  .tr.modifiers .td[modified="true"] {
+  
+  .tr.modifiers .td {
+    position: relative;
+  }
+  
+  .tr.modifiers .td .plus {
+    position: absolute;
+    top: -9px;
+    left: -1px;
+    font-size: 21px;
+    display: none;
+  }
+  
+  .tr.modifiers .td[stick="true"][modified="1"] {
     background: #333;
+  }
+  
+  .tr.modifiers .td[stick="false"][modified="1"] {
+    background: white;
+  }
+  
+  .tr.modifiers .td[stick="false"][modified="1"] .plus {
+    display: block;
   }
 
   #controls {
@@ -246,6 +267,12 @@
     border: none;
     font-size: 24px;
     color: #333;
+    float: left;
+    width: 33px;
+  }
+  
+  #stop {
+    display: none;
   }
 
   #bpm {

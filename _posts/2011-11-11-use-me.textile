@@ -1,0 +1,27 @@
+---
+layout: post
+who: "James Gadson"
+title: "Use Me"
+act: "Bill Withers"
+year: "1972"
+bpm: "100"
+image: ""
+position: "200px -200px"
+---
+
+<p>Grooving is a spiritual thing for James Gadson.</p>
+
+<p>On this track, the band grooved for about ten minutes straight.  After that, Bill Withers put down his vocal part and the engineer manufactured a breakdown by soloing vocals and drums for certain sections.</p>
+
+<p>If you listen closely, you can hear the bass bleeding into the drum mics during the breakdowns.</p>
+
+<p>I dig this work-flow.  When the album version starts, the musicians have already been deep in the groove for a few minutes.</p>
+
+<script>
+  var mods = [ [6,1], [6,3], [7,1] ];
+  var values = [
+    [4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 2, 4, 2, 4, 2, 4, 2, 4],
+    [0, 0, 0, 0, 4, 0, 0, 4, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 4, 4, 0, 4, 0, 3, 4, 0, 4, 0, 0, 4, 0, 0, 3, 4, 0, 4, 0, 4, 0, 3]
+  ];
+</script>

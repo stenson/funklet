@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+ <head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Use Me /// The Funklet</title>
+   <link rel="stylesheet" href="/style/style.css"/>
+ </head>
+ <body>
+  <div id="funklet-bar">
+  <a href="/">The Funklet</a>
+</div>
+<div id="header" style="background-image:url(/images/); background-position:200px -200px">
+  <div id="info">
+    <h1 id="name"><span>James Gadson</span></h1>
+    <div id="song">
+      <h2><span>Use Me</span></h2>
+      <h3><span>Bill Withers</span></h3>
+      <h3><span>1972</span></h3>
+    </div>
+  </div>
+</div>
+<div id="container">
+  <div id="diagram-container">
+    <div id="diagram">
+      <div id="line"></div>
+      <div id="decoration"></div>
+      <div id="stub-left" class="stub"></div>
+      <div id="stub-right" class="stub"></div>
+    </div>
+    <div id="controls">
+      <form id="bpm-form">
+        <button class="control" id="start">&#9654;</button>
+        <button class="control" id="stop">&#9724;</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="100"/><span>BPM</span>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="text">
+  <p>Grooving is a spiritual thing for James Gadson.</p>
+<p>On this track, the band grooved for about ten minutes straight.  After that, Bill Withers put down his vocal part and the engineer manufactured a breakdown by soloing vocals and drums for certain sections.</p>
+<p>If you listen closely, you can hear the bass bleeding into the drum mics during the breakdowns.</p>
+<p>I dig this work-flow.  When the album version starts, the musicians have already been deep in the groove for a few minutes.</p>
+<script>
+  var mods = [ [6,1], [6,3], [7,1] ];
+  var values = [
+    [4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 2, 4, 2, 4, 2, 4, 2, 4],
+    [0, 0, 0, 0, 4, 0, 0, 4, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 4, 4, 0, 4, 0, 3, 4, 0, 4, 0, 0, 4, 0, 0, 3, 4, 0, 4, 0, 4, 0, 3]
+  ];
+</script>
+</div>
+<script src="/script/cabin.js"></script>
+<script src="/script/functions.js"></script>
+<script src="/script/funklet.js"></script>
+ </body>
+</html>
