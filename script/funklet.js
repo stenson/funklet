@@ -9,13 +9,15 @@ var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
 var bpmMeter = getElement("bpm");
+var line = getElement("line");
+var width = diagram.clientWidth;
 
 var names = ["hat", "snare", "kick"];
 var buildNames = function(a, b) {
   return b.map(function(i) { return a+""+i })
 };
 var sampleNames = (["foothat"])
-  .concat(buildNames("hat",   [1,2,3,4]))  
+  .concat(buildNames("hat",   [1,2,3,4]))
   .concat(buildNames("ohat",  [1,2,3,4]))
   .concat(buildNames("snare", [1,2,3,4]))
   .concat(buildNames("kick",  [1,2,3,4]));
@@ -31,43 +33,52 @@ listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
 
 var context = new webkitAudioContext();
 var outstandingOpen = null;
+var left = 5;
 
 getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
 
   var interval;
   var i = 0;
-  
-  var start = function() {
-    interval = runCallbackWithMetronome(context, bpm, 4, function(lag) {
-      if (lag > 0.5) stop();
-      
-      var last = ((i - 1) >= 0) ? (i-1) : length;
 
-      values.forEach(function(row, j) {
-        var volume = row[i];
-        var prefix = names[j];
-        rows[j][last].className = "td";
-        rows[j][i].className = "td current";
-        var buffer = buffers[prefix+""+volume];
-        if (j === 0 && volume !== 0 && outstandingOpen) {
-          outstandingOpen.noteOff(0);
-          outstandingOpen = null;
-          playSampleWithBuffer(context, buffers.foothat, 0, 1);
-        }
-        
-        if (j === 0 && modifiedValues[i] && volume !== 0) {
-          buffer = buffers["o"+prefix+""+volume];
-          outstandingOpen = playSampleWithBuffer(context, buffer, 0, 0.85);
-        } else {
-          (volume !== 0) && playSampleWithBuffer(context, buffer, 0, 1);
-        }
-      }, 0);
+  var metronomeClickback = function(lag) {
+    if (lag > 0.5) stop();
 
-      i = (i === length) ? 0 : (i + 1);
-    });
+    var last = ((i - 1) >= 0) ? (i-1) : length;
+    left = rows[0][i].offsetLeft;
+    line.style.left = (left) + "px";
+
+    values.forEach(function(row, j) {
+      var volume = row[i];
+      var prefix = names[j];
+      rows[j][last].className = "td";
+      rows[j][i].className = "td current";
+      var buffer = buffers[prefix+""+volume];
+      if (j === 0 && volume !== 0 && outstandingOpen) {
+        outstandingOpen.noteOff(0);
+        outstandingOpen = null;
+        playSampleWithBuffer(context, buffers.foothat, 0, 1);
+      }
+
+      if (j === 0 && modifiedValues[i] && volume !== 0) {
+        buffer = buffers["o"+prefix+""+volume];
+        outstandingOpen = playSampleWithBuffer(context, buffer, 0, 0.85);
+      } else {
+        (volume !== 0) && playSampleWithBuffer(context, buffer, 0, 1);
+      }
+    }, 0);
+
+    i = (i === length) ? 0 : (i + 1);
   };
-  
+
+  var metronomeGraphicback = function(lag) {
+    //line.style.left = left + "px";
+  };
+
+  var start = function() {
+    interval = runCallbackWithMetronome(context, bpm, 4, metronomeClickback, metronomeGraphicback);
+  };
+
   var stop = function() {
     clearInterval(interval);
   };

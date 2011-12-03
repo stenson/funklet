@@ -131,17 +131,20 @@ var listenForBpmChange = function(bpm, el, form) {
   });
 };
 
-var runCallbackWithMetronome = function(context, bpm, readCount, clickback) {
+var runCallbackWithMetronome = function(context, bpm, readCount, clickback, graphicback) {
   var clickRate = (60 / bpm.value) / readCount;
   var lastTime = context.currentTime;
 
   return setInterval(function() {
     var current = context.currentTime;
+    var lag = current - lastTime;
 
     if (current > lastTime + clickRate) {
       clickRate = (60 / bpm.value) / readCount;
       lastTime += clickRate;
-      clickback(current - lastTime);
+      clickback(lag);
     }
+
+    graphicback && graphicback(lag);
   }, 0);
 };

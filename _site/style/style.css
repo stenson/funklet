@@ -4,23 +4,23 @@
     margin: 0;
     font-family: "Helvetica Neue", Arial, Helvetica;
   }
-  
+
   body {
     overflow-y: scroll;
   }
-  
+
   #welcome {
     font-size:34px;
   }
   #welcome span {
     font-weight: light;
   }
-  
+
   #funklet-bar {
     background: white;
     position: relative;
   }
-  
+
   #funklet-bar a {
     font-size: 10px;
     color: red;
@@ -32,7 +32,7 @@
     height: 30px;
     text-decoration: none;
   }
-  
+
   #funklet-bar a:hover {
     text-decoration: underline;
   }
@@ -43,7 +43,7 @@
     background: white;
     height: 230px;
   }
-  
+
   #header {
     background-position: 200px -200px;
     background-size: cover;
@@ -52,28 +52,28 @@
     position: relative;
     -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.4);
   }
-  
+
   #header.front {
     background-position: 0px -200px;
     width: 800px;
     margin: auto auto;
   }
-  
+
   #info {
     width: 800px;
     margin: auto auto;
     padding-top: 25px;
   }
-  
+
   #header span {
     background: rgba(255,0,0,0.7);
     color: white;
   }
-  
+
   h1 {
     font-size: 45px;
   }
-  
+
   h2 {
     font-size: 31px;
   }
@@ -81,17 +81,26 @@
     font-size: 21px;
     font-weight: normal;
   }
-  
+
   #diagram-container {
     width: 800px;
     margin: auto auto;
   }
-  
+
   #diagram {
     position: relative;
     height: 115px;
   }
-  
+
+  #line {
+    height: 150px;
+    width: 23px;
+    background: rgba(105,105,105,0.05);
+    position: absolute;
+    top: 0px;
+    left: 5px;
+  }
+
   .stub {
     width: 15px;
     height: 5px;
@@ -99,11 +108,11 @@
     position: absolute;
     top: 30px;
   }
-  
+
   #stub-left {
     left: -15px;
   }
-  
+
   #stub-right {
     right: -6px;
   }
@@ -111,11 +120,11 @@
   .tr {
     height: 25px;
   }
-  
+
   .tr.modifiers {
     height: 15px;
   }
-  
+
   .tr.hat {
     height: 18px;
   }
@@ -126,7 +135,7 @@
     border-right: 1px solid #eee;
     float: left;
   }
-  
+
   .td-holder:nth-child(1) {
     border-left: 5px solid #333;
     padding-left: 1px;
@@ -142,28 +151,28 @@
   #decoration {
     border-right: 7px solid #333 !important;
   }
-  
+
   .td-holder:nth-child(32) {
     border-color: #333 !important;
   }
-  
+
   #decoration {
     width: 392px;
     height: 30px;
   }
-  
+
   .kick .td-holder {
     height: 35px !important;
   }
-  
+
   .hat .td-holder {
     height: 18px !important;
   }
-  
+
   .hat .td {
     margin-top: 0px;
   }
-  
+
   .kick .td {
     margin-top: 17px;
   }
@@ -217,7 +226,7 @@
     margin-top: 0px;
     background: whitesmoke;
   }
-  
+
   .tr.modifiers .td-holder {
     height: 15px;
     border-right-color: white;
@@ -231,14 +240,14 @@
     margin-top:50px;
     color: #777;
   }
-  
+
   .control {
     background: none;
     border: none;
     font-size: 24px;
     color: #333;
   }
-  
+
   #bpm {
     width: 50px;
     font-family: "Helvetica Neue", ;
@@ -247,7 +256,7 @@
     border: none;
     text-align: center;
   }
-  
+
   #text {
     width: 800px;
     margin: auto auto;
@@ -255,13 +264,13 @@
     margin-bottom: 50px;
     position: relative;
   }
-  
+
   #about {
     position: absolute;
     top: 0px;
     left: 400px;
   }
-  
+
   #text p {
     font-family: Georgia, serif;
     width: 493px;
@@ -271,20 +280,20 @@
     text-indent: 15px;
     margin-bottom: 15px;
   }
-  
+
   #text #about p {
     width: 400px;
   }
-  
+
   #text p em {
     font-family: Georgia, serif;
   }
-  
+
   #text p:first-child:first-line {
     font-variant: small-caps;
     font-size: 18px;
   }
-  
+
   a.link {
     display: block;
     font-weight: bold;
@@ -295,7 +304,7 @@
     -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.4);
     position: relative;
   }
-  
+
   a.link span.image {
     display: block;
     position: absolute;
@@ -306,7 +315,7 @@
     background-position: center center;
     opacity: 0.2;
   }
-  
+
   a.link span.title {
     color: hsla(0, 100%, 50%, 0.8);
     font-size: 25px;
@@ -314,15 +323,15 @@
     display: block;
     position: relative;
   }
-  
+
   a.link:hover span.title {
     opacity: 0.3;
   }
-  
+
   a.link:hover span.image {
     opacity: 0.7;
   }
-  
+
   #posts {
     width: 400px;
   }
