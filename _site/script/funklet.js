@@ -22,7 +22,6 @@ var sampleNames = (["foothat"])
 
 var modifiedValues = [];
 mods.forEach(function(mod) {
-  console.log(mod);
   modifiedValues[mod[0]*4 + mod[1]] = 1;
 });
 var modifiers = writeModifiersIntoTable(length+1, diagram, modifiedValues, values[0]);
@@ -67,26 +66,18 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
         }
           
         if (volume) {
-          if (modified) outstandingOpen = playSampleWithBuffer(context, modifiedBuffer, 0, 0.85);
-          else playSampleWithBuffer(context, buffer, 0, 1);
+          if (modified) {
+            outstandingOpen = playSampleWithBuffer(context, buffers["o" + prefix + "" + volume], 0, 0.85);
+          }
+          else {
+            playSampleWithBuffer(context, buffer, 0, 1);
+          }
         } else if (modified) {
           playSampleWithBuffer(context, buffers.foothat, 0, 1);
         }
       } else { // bass and snare
         (volume !== 0) && playSampleWithBuffer(context, buffer, 0, 1);
       }
-      // if (j === 0 && volume !== 0 && outstandingOpen) {
-      //   outstandingOpen.noteOff(0);
-      //   outstandingOpen = null;
-      //   playSampleWithBuffer(context, buffers.foothat, 0, 1);
-      // }
-      // 
-      // if (j === 0 && modifiedValues[i] && volume !== 0) {
-      //   buffer = buffers["o"+prefix+""+volume];
-      //   outstandingOpen = playSampleWithBuffer(context, buffer, 0, 0.85);
-      // } else {
-      //   (volume !== 0) && playSampleWithBuffer(context, buffer, 0, 1);
-      // }
     }, 0);
 
     i = (i === length) ? 0 : (i + 1);
@@ -106,4 +97,5 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
 
   startButton.addEventListener("mouseup", start, true);
   stopButton.addEventListener("mouseup", stop, true);
+  startButton.style.visibility = "visible";
 });

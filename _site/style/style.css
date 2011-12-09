@@ -95,10 +95,11 @@
   #line {
     height: 150px;
     width: 23px;
-    background: rgba(105,105,105,0.05);
+    background: rgba(105,105,105,0.1);
     position: absolute;
     top: 0px;
     left: 5px;
+    z-index: 0;
   }
 
   .stub {
@@ -119,6 +120,8 @@
 
   .tr {
     height: 25px;
+    position: relative;
+    z-index: 1;
   }
 
   .tr.modifiers {
@@ -181,7 +184,7 @@
     margin-top: 7px;
     height: 18px;
     width: 22px;
-    background: white;
+    background: none;
     opacity: 0.4;
     cursor: pointer;
     -webkit-transition: opacity 0.15s linear;
@@ -269,6 +272,10 @@
     color: #333;
     float: left;
     width: 33px;
+  }
+  
+  #start {
+    visibility: hidden;
   }
   
   #stop {
