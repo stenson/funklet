@@ -110,7 +110,7 @@ var listenForModifiers = function(modifiers, modifiedValues, values) {
       modifiedValues[i] = v;
       modifier.setAttribute("modified", v);
     };
-    
+
     modifier.addEventListener("mouseup", function(e) {
       setValue(parseInt(modifier.getAttribute("modified"), 10) > 0 ? 0 : 1);
     });
@@ -127,27 +127,30 @@ var listenForBpmChange = function(bpm, el, form) {
   };
 
   el.addEventListener("blur", updateBpm, true);
-  
+
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     updateBpm();
   });
 };
 
-var runCallbackWithMetronome = function(context, bpm, readCount, clickback, graphicback) {
+var runCallbackWithMetronome = function(context, bpm, readCount, clickback, shift) {
   var clickRate = (60 / bpm.value) / readCount;
   var lastTime = context.currentTime;
+  var i = 1;
 
   return setInterval(function() {
     var current = context.currentTime;
     var lag = current - lastTime;
 
     if (current > lastTime + clickRate) {
+      clickback(lag);
+
+      var shiftNext = (++i)%2 === 0;
       clickRate = (60 / bpm.value) / readCount;
       lastTime += clickRate;
-      clickback(lag);
+      if (shiftNext) lastTime += (clickRate/4);
+      else lastTime -= (clickRate/4);
     }
-
-    graphicback && graphicback(lag);
   }, 0);
 };
