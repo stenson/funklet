@@ -4,13 +4,29 @@
  <title>The Funklet</title>
  <link href="http://funklet.com/atom.xml" rel="self"/>
  <link href="http://funklet.com/"/>
- <updated>2011-12-09T09:53:02-08:00</updated>
+ <updated>2011-12-11T23:02:17-08:00</updated>
  <id>http://funklet.com/</id>
  <author>
    <name>Jack Stratton</name>
    <email>stratton.jack@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Expensive Shit</title>
+   <link href="http://funklet.com/expensive-shit"/>
+   <updated>2011-12-11T00:00:00-08:00</updated>
+   <id>http://funklet.com/expensive-shit</id>
+   <content type="html">&lt;p&gt;Tony.&lt;/p&gt;
+&lt;script&gt;
+  var mods = [ [2,3], [4,3] ];
+  var values = [
+    [1, 0, 1, 2, 2, 0, 2, 1, 3, 0, 2, 1, 3, 0, 1, 2, 2, 0, 1, 1, 3, 0, 1, 1, 3, 0, 2, 2, 4, 0, 2, 1],
+    [3, 2, 0, 0, 0, 2, 0, 0, 3, 1, 0, 0, 0, 4, 0, 0, 3, 2, 0, 0, 0, 1, 0, 0, 3, 2, 0, 0, 2, 1, 0, 0],
+    [0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+&lt;/script&gt;</content>
+ </entry>
  
  <entry>
    <title>Str Bts DC Gogo 100</title>

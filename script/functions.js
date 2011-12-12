@@ -134,6 +134,8 @@ var listenForBpmChange = function(bpm, el, form) {
   });
 };
 
+var swing = (1/24);
+
 var runCallbackWithMetronome = function(context, bpm, readCount, clickback, shift) {
   var clickRate = (60 / bpm.value) / readCount;
   var lastTime = context.currentTime;
@@ -149,8 +151,8 @@ var runCallbackWithMetronome = function(context, bpm, readCount, clickback, shif
       var shiftNext = (++i)%2 === 0;
       clickRate = (60 / bpm.value) / readCount;
       lastTime += clickRate;
-      if (shiftNext) lastTime += (clickRate/4);
-      else lastTime -= (clickRate/4);
+      if (shiftNext) lastTime += (swing*clickRate);
+      else lastTime -= (swing*clickRate);
     }
   }, 0);
 };

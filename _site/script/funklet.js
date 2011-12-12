@@ -47,7 +47,7 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
 
     var last = ((i - 1) >= 0) ? (i-1) : length;
     left = rows[0][i].offsetLeft;
-    line.style.left = (left) + "px";
+    //line.style.left = (left) + "px";
 
     values.forEach(function(row, j) {
       var volume = row[i];
