@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+ <head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Expensive Shit /// The Funklet</title>
+   <link rel="stylesheet" href="/style/style.css"/>
+ </head>
+ <body>
+  <div id="funklet-bar">
+  <a href="/">The Funklet</a>
+</div>
+<div id="header" style="background-image:url(/images/); background-position:200px -200px">
+  <div id="info">
+    <h1 id="name"><span>Tony Allen</span></h1>
+    <div id="song">
+      <h2><span>Expensive Shit</span></h2>
+      <h3><span>Fela Kuti</span></h3>
+      <h3><span>1975</span></h3>
+    </div>
+  </div>
+</div>
+<div id="container">
+  <div id="diagram-container">
+    <div id="diagram">
+      <div id="line"></div>
+      <div id="decoration"></div>
+      <div id="stub-left" class="stub"></div>
+      <div id="stub-right" class="stub"></div>
+    </div>
+    <div id="controls">
+      <form id="bpm-form">
+        <button class="control" id="start">&#9654;</button>
+        <button class="control" id="stop">&#9724;</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="125"/><span>BPM</span>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="text">
+  <p>Tony.</p>
+<script>
+  var mods = [ [2,3], [4,3] ];
+  var values = [
+    [1, 0, 1, 2, 2, 0, 2, 1, 3, 0, 2, 1, 3, 0, 1, 2, 2, 0, 1, 1, 3, 0, 1, 1, 3, 0, 2, 2, 4, 0, 2, 1],
+    [3, 2, 0, 0, 0, 2, 0, 0, 3, 1, 0, 0, 0, 4, 0, 0, 3, 2, 0, 0, 0, 1, 0, 0, 3, 2, 0, 0, 2, 1, 0, 0],
+    [0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+</script>
+</div>
+<script src="/script/cabin.js"></script>
+<script src="/script/functions.js"></script>
+<script src="/script/funklet.js"></script>
+ </body>
+</html>
