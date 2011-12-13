@@ -5,8 +5,9 @@ title: "Expensive Shit"
 act: "Fela Kuti"
 year: "1975"
 bpm: "125"
-image: ""
-position: "200px -200px"
+image: "tony.jpg"
+position: "300px -100px"
+swing: "2/24"
 ---
 
 

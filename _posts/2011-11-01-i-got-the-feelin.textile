@@ -7,6 +7,7 @@ year: "1968"
 bpm: "120"
 image: "clyde.jpg"
 position: "200px -200px"
+swing: "0/24"
 ---
 
 <p>As a kid, I saw pictures of James Brown on stage with two drummers.  That was cool, and it let me off the hook when I couldn’t play the grooves from the records.  I figured, “If I can get close to the original using only four limbs, that’s pretty good.”</p>

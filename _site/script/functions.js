@@ -82,6 +82,20 @@ var writeModifiersIntoTable = function(length, div, modifiedValues, hats) {
   return tds;
 };
 
+var readSwingFromMeter = function(meter, diagram) {
+  console.log("running");
+  var svals = meter.value.split("/").map(function(v) { return parseInt(v, 10) });
+  diagram.className = "swing-"+svals[0];
+  return svals[0]/svals[1];
+};
+
+var listenForSwingChange = function(swing, meter, diagram) {
+  var read = function() {
+    swing.value = readSwingFromMeter(meter, diagram);
+  };
+  meter.addEventListener("blur", read, true);
+};
+
 /* listening for value changes */
 
 var listenForValuesFromRows = function(rows, values, limit, modifiers) {
@@ -134,9 +148,7 @@ var listenForBpmChange = function(bpm, el, form) {
   });
 };
 
-var swing = (1/24);
-
-var runCallbackWithMetronome = function(context, bpm, readCount, clickback, shift) {
+var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swing) {
   var clickRate = (60 / bpm.value) / readCount;
   var lastTime = context.currentTime;
   var i = 1;
@@ -151,8 +163,9 @@ var runCallbackWithMetronome = function(context, bpm, readCount, clickback, shif
       var shiftNext = (++i)%2 === 0;
       clickRate = (60 / bpm.value) / readCount;
       lastTime += clickRate;
-      if (shiftNext) lastTime += (swing*clickRate);
-      else lastTime -= (swing*clickRate);
+      
+      var s = swing.value;
+      s && (shiftNext) ? (lastTime += (s*clickRate)) : (lastTime -= (s*clickRate));
     }
   }, 0);
 };

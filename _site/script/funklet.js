@@ -7,6 +7,7 @@ var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
 var bpmMeter = getElement("bpm");
+var swingMeter = getElement("swing");
 var line = getElement("line");
 var width = diagram.clientWidth;
 
@@ -28,9 +29,12 @@ var modifiers = writeModifiersIntoTable(length+1, diagram, modifiedValues, value
 var rows = writeValuesIntoTable(values, diagram, names);
 var bpm = { value: parseInt(bpmMeter.value, 10) };
 
+var swing = { value: readSwingFromMeter(swingMeter, diagram) };
+
 listenForModifiers(modifiers, modifiedValues, values);
 listenForValuesFromRows(rows, values, 4, modifiers);
 listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
+listenForSwingChange(swing, swingMeter, diagram);
 
 var context = new webkitAudioContext();
 var outstandingOpen = null;
@@ -86,7 +90,7 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   var start = function() {
     startButton.style.display = "none";
     stopButton.style.display = "block";
-    interval = runCallbackWithMetronome(context, bpm, 4, metronomeClickback);
+    interval = runCallbackWithMetronome(context, bpm, 4, metronomeClickback, swing);
   };
 
   var stop = function() {
