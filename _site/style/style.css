@@ -159,7 +159,7 @@
   .td-holder:nth-child(32) {
     border-color: #333 !important;
   }
-  
+
   .swing-1 .td-holder:nth-child(2n) .td { margin-left: 1px; }
   .swing-2 .td-holder:nth-child(2n) .td { margin-left: 2px; }
   .swing-3 .td-holder:nth-child(2n) .td { margin-left: 3px; }
@@ -172,17 +172,6 @@
   .swing-10 .td-holder:nth-child(2n) .td { margin-left: 10px; }
   .swing-11 .td-holder:nth-child(2n) .td { margin-left: 11px; }
   .swing-12 .td-holder:nth-child(2n) .td { margin-left: 12px; }
-  .swing-13 .td-holder:nth-child(2n) .td { margin-left: 13px; }
-  .swing-14 .td-holder:nth-child(2n) .td { margin-left: 14px; }
-  .swing-15 .td-holder:nth-child(2n) .td { margin-left: 15px; }
-  .swing-16 .td-holder:nth-child(2n) .td { margin-left: 16px; }
-  .swing-17 .td-holder:nth-child(2n) .td { margin-left: 17px; }
-  .swing-18 .td-holder:nth-child(2n) .td { margin-left: 18px; }
-  .swing-19 .td-holder:nth-child(2n) .td { margin-left: 19px; }
-  .swing-20 .td-holder:nth-child(2n) .td { margin-left: 20px; }
-  .swing-21 .td-holder:nth-child(2n) .td { margin-left: 20.5px; }
-  .swing-22 .td-holder:nth-child(2n) .td { margin-left: 21px; }
-  .swing-23 .td-holder:nth-child(2n) .td { margin-left: 21.5px; }
 
   #decoration {
     width: 392px;
@@ -260,11 +249,11 @@
     border-right-color: white;
     font-weight: bold;
   }
-  
+
   .tr.modifiers .td {
     position: relative;
   }
-  
+
   .tr.modifiers .td .plus {
     position: absolute;
     top: -9px;
@@ -272,15 +261,15 @@
     font-size: 21px;
     display: none;
   }
-  
+
   .tr.modifiers .td[stick="true"][modified="1"] {
     background: #333;
   }
-  
+
   .tr.modifiers .td[stick="false"][modified="1"] {
     background: white;
   }
-  
+
   .tr.modifiers .td[stick="false"][modified="1"] .plus {
     display: block;
   }
@@ -288,6 +277,7 @@
   #controls {
     margin-top:50px;
     color: #777;
+    position: relative;
   }
 
   .control {
@@ -298,11 +288,11 @@
     float: left;
     width: 33px;
   }
-  
+
   #start {
     visibility: hidden;
   }
-  
+
   #stop {
     display: none;
   }
@@ -314,6 +304,32 @@
     color: #333;
     border: none;
     text-align: center;
+  }
+
+  #swing-meter {
+    height: 20px;
+    width: 143px;
+    background: white;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+
+  #swing-meter div {
+    width: 10px;
+    height: 20px;
+    background: #eee;
+    float: left;
+    border-right: 1px solid white;
+    cursor: pointer;
+  }
+
+  #swing-meter div.swung {
+    background: #ccc;
+  }
+
+  #swing-meter div:hover {
+    background: #777;
   }
 
   #text {

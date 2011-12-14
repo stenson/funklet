@@ -7,14 +7,14 @@ var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
 var bpmMeter = getElement("bpm");
-var swingMeter = getElement("swing");
-var line = getElement("line");
+var swingMeter = getElement("swing-meter");
+//var line = getElement("line");
 var width = diagram.clientWidth;
 
 // sample names
 var names = ["hat", "snare", "kick"];
 var buildNames = function(a, b) { return b.map(function(i) { return a+""+i }) };
- 
+
 var sampleNames = (["foothat"])
   .concat(buildNames("hat",   [1,2,3,4]))
   .concat(buildNames("ohat",  [1,2,3,4]))
@@ -29,7 +29,7 @@ var modifiers = writeModifiersIntoTable(length+1, diagram, modifiedValues, value
 var rows = writeValuesIntoTable(values, diagram, names);
 var bpm = { value: parseInt(bpmMeter.value, 10) };
 
-var swing = { value: readSwingFromMeter(swingMeter, diagram) };
+var swing = {};
 
 listenForModifiers(modifiers, modifiedValues, values);
 listenForValuesFromRows(rows, values, 4, modifiers);
@@ -42,7 +42,7 @@ var left = 5;
 
 getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
-  
+
   var interval;
   var i = 0;
 
@@ -59,16 +59,16 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
       rows[j][last].className = "td";
       rows[j][i].className = "td current";
       var buffer = buffers[prefix+""+volume];
-      
+
       if (j === 0) { // hat row, more complicated
         var modified = modifiedValues[i];
         var modifiedBuffer = buffers["o" + prefix + "" + volume];
-        
+
         if (outstandingOpen && (volume || modified)) {
           outstandingOpen.noteOff(0); // kill the ringing hat
           oustandingOpen = null;
         }
-          
+
         if (volume) {
           if (modified) {
             outstandingOpen = playSampleWithBuffer(context, buffers["o" + prefix + "" + volume], 0, 0.85);

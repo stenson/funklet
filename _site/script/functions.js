@@ -82,20 +82,6 @@ var writeModifiersIntoTable = function(length, div, modifiedValues, hats) {
   return tds;
 };
 
-var readSwingFromMeter = function(meter, diagram) {
-  console.log("running");
-  var svals = meter.value.split("/").map(function(v) { return parseInt(v, 10) });
-  diagram.className = "swing-"+svals[0];
-  return svals[0]/svals[1];
-};
-
-var listenForSwingChange = function(swing, meter, diagram) {
-  var read = function() {
-    swing.value = readSwingFromMeter(meter, diagram);
-  };
-  meter.addEventListener("blur", read, true);
-};
-
 /* listening for value changes */
 
 var listenForValuesFromRows = function(rows, values, limit, modifiers) {
@@ -148,6 +134,26 @@ var listenForBpmChange = function(bpm, el, form) {
   });
 };
 
+var listenForSwingChange = function(swing, meter, diagram) {
+  var children = [].slice.apply(meter.children);
+
+  var set = function(i) {
+    swing.value = i/12;
+    diagram.className = "swing-"+i;
+
+    var j = children.length;
+    while (--j >= 0) {
+      children[j].className = (j < i) ? "" : "swung";
+    }
+  };
+
+  children.forEach(function(m, i) {
+    m.addEventListener("mouseup", function() { set(i) }, true);
+  });
+
+  set(parseInt(meter.getAttribute("data-swing"), 10));
+};
+
 var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swing) {
   var clickRate = (60 / bpm.value) / readCount;
   var lastTime = context.currentTime;
@@ -163,7 +169,7 @@ var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swin
       var shiftNext = (++i)%2 === 0;
       clickRate = (60 / bpm.value) / readCount;
       lastTime += clickRate;
-      
+
       var s = swing.value;
       s && (shiftNext) ? (lastTime += (s*clickRate)) : (lastTime -= (s*clickRate));
     }

@@ -17,7 +17,7 @@ layout: default
 <div id="container">
   <div id="diagram-container">
     <div id="diagram">
-      <div id="line"></div>
+      <!-- <div id="line"></div> -->
       <div id="decoration"></div>
       <div id="stub-left" class="stub"></div>
       <div id="stub-right" class="stub"></div>
@@ -26,11 +26,23 @@ layout: default
       <form id="bpm-form">
         <button class="control" id="start">&#9654;</button>
         <button class="control" id="stop">&#9724;</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span>
-          <input id="bpm" type="text" value="{{ page.bpm }}"/><span>BPM</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span>w/</span>
-          <input id="swing" type="text" value="{{ page.swing }}"/><span>swing</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="{{ page.bpm }}"/><span>BPM</span>
       </form>
+      <div id="swing-meter" data-swing="{{ page.swing }}">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
 </div>

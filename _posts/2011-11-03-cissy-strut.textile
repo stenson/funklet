@@ -7,7 +7,7 @@ year: "1969"
 bpm: "100"
 image: "zigaboo.jpg"
 position: "50px -100px"
-swing: "0/24"
+swing: "2"
 ---
 
 <p>Fact: Zigaboo used two hands on the hat when recording “Cissy Strut.”</p>

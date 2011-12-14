@@ -7,7 +7,7 @@ year: "1996"
 bpm: "110"
 image: "purdie.jpg"
 position: "0px -350px"
-swing: "0/24"
+swing: "0"
 ---
 
 <p>Purdie&rsquo;s take on Stubblefield&rsquo;s &ldquo;Cold Sweat.&rdquo;</p>

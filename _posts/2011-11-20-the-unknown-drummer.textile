@@ -7,12 +7,12 @@ year: "n/a"
 bpm: "110"
 image: ""
 position: "200px -200px"
-swing: "5/24"
+swing: "3"
 ---
 
 <p>Welcome to the Tomb of the Unknowns.</p>
 
-<p>I was listening to a friend’s remix and heard a funky drum break.  I asked if he knew where the break was from, and he said it was part of a library of loops he bought.  He sent me the 1-bar cut.</p> 
+<p>I was listening to a friend’s remix and heard a funky drum break.  I asked if he knew where the break was from, and he said it was part of a library of loops he bought.  He sent me the 1-bar cut.</p>
 
 <p>I Shazamed it.  I played it for some funky friends.  No one had any leads.</p>
 
