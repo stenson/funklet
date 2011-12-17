@@ -80,7 +80,7 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
           playSampleWithBuffer(context, buffers.foothat, 0, 1);
         }
       } else { // bass and snare
-        (volume !== 0) && playSampleWithBuffer(context, buffer, 0, 1);
+        (volume !== 0) && playSampleWithBuffer(context, buffer, context.currentTime+0.02, 1);
       }
     }, 0);
 
