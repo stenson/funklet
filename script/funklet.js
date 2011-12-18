@@ -40,6 +40,12 @@ var context = new webkitAudioContext();
 var outstandingOpen = null;
 var left = 5;
 
+var print = function() {
+  console.log("var values = [\n", values.map(function(vs) {
+    return "  [" + vs.join(", ") + "]";
+  }).join(",\n"), "\n]");
+};
+
 getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
 
@@ -79,8 +85,8 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
         } else if (modified) {
           playSampleWithBuffer(context, buffers.foothat, 0, 1);
         }
-      } else { // bass and snare
-        (volume !== 0) && playSampleWithBuffer(context, buffer, context.currentTime+0.02, 1);
+      } else if (volume !== 0) { // bass and snare
+        playSampleWithBuffer(context, buffer, 0, 1);
       }
     }, 0);
 
@@ -94,6 +100,7 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   };
 
   var stop = function() {
+    i = 0;
     stopButton.style.display = "none";
     startButton.style.display = "block";
     clearInterval(interval);
