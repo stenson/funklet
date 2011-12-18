@@ -7,7 +7,7 @@ year: "1975"
 bpm: "125"
 image: "tony.jpg"
 position: "300px -100px"
-swing: "2"
+swing: "1"
 ---
 
 

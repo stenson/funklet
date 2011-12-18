@@ -4,10 +4,10 @@ who: "Narada Michael Walden"
 title: "Come Dancing"
 act: "Jeff Beck"
 year: "1976"
-bpm: "100"
+bpm: "96"
 image: "narada.jpg"
 position: "0px -250px"
-swing: "4"
+swing: "2"
 ---
 
 <p>Narada wrote this tune. Wilbur Bascomb&rsquo;s bass playing will break your neck.</p>
@@ -19,8 +19,8 @@ swing: "4"
 <script>
   var mods = [[6,2]];
   var values = [
-    [3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 4, 0, 3, 0, 3, 0],
-    [0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 2, 0, 4, 2, 2, 0, 0, 2, 0, 0, 4, 2, 0, 0, 0, 4, 0, 0, 4, 2, 2, 0],
+    [3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 2, 0, 4, 0, 3, 0, 2, 0],
+    [0, 1, 2, 0, 4, 2, 1, 0, 0, 1, 2, 0, 4, 2, 1, 0, 0, 2, 0, 0, 4, 2, 0, 0, 0, 4, 0, 0, 4, 2, 1, 0],
     [4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3]
   ];
 </script>
