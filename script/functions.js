@@ -54,31 +54,27 @@ var writeValueIntoCell = function(value, tr) {
   return td;
 };
 
-var writeValuesIntoRow = function(values, table, name) {
-  var tr = cabin("div.tr."+name);
-  table.appendChild(tr);
+var writeValuesIntoRow = function(values, tr, name) {
   return values.map(function(value) {
     return writeValueIntoCell(value, tr);
   });
 };
 
-var writeValuesIntoTable = function(patterns, div) {
+var writeValuesIntoTable = function(patterns, trs) {
   return patterns.map(function(values, i) {
-    return writeValuesIntoRow(values, div, names[i]);
+    return writeValuesIntoRow(values, trs[i], names[i]);
   });
 };
 
-var writeModifiersIntoTable = function(length, div, modifiedValues, hats) {
-  var tr = cabin("div.tr.modifiers");
+var writeModifiersIntoTable = function(length, where, modifiedValues, hats) {
   var tds = [];
   for(var i = 0; i < length; i++) {
-    var td = writeValueIntoCell(0, tr);
+    var td = writeValueIntoCell(0, where);
     td.appendChild(cabin("span.plus", "+"));
     td.setAttribute("stick", hats[i] > 0);
     td.setAttribute("modified", modifiedValues[i]);
     tds.push(td);
   }
-  div.appendChild(tr);
   return tds;
 };
 
@@ -154,7 +150,13 @@ var listenForSwingChange = function(swing, meter, diagram) {
   set(parseInt(meter.getAttribute("data-swing"), 10));
 };
 
-var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swing) {
+var listenForJdChange = function(jds, rows) {
+  jds.forEach(function(jd, i) {
+    rows[i].style.marginLeft = (jd*100) + "px";
+  });
+};
+
+var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swing, jd) {
   var clickRate = (60 / bpm.value) / readCount;
   var lastTime = context.currentTime;
   var i = 1;
@@ -163,7 +165,7 @@ var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swin
     var current = context.currentTime;
     var lag = current - lastTime;
 
-    if (current > lastTime + clickRate) {
+    if (current > lastTime + clickRate +jd[0][jd[1]]) {
       clickback(lag);
 
       var shiftNext = (++i)%2 === 0;

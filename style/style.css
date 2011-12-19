@@ -137,7 +137,6 @@
     width: 22px;
     border-right: 1px solid #eee;
     float: left;
-    overflow: hidden;
   }
 
   .td-holder:nth-child(1) {
