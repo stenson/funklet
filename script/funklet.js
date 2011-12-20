@@ -43,7 +43,7 @@ listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
 listenForSwingChange(swing, swingMeter, diagram);
 listenForJdChange(jd, [].slice.apply(diagram.querySelectorAll(".hat, .snare, .kick")));
 
-var context = new webkitAudioContext();
+var context = new AudioContext();
 var outstandingOpen = null;
 
 var print = function() {
