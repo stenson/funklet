@@ -1,6 +1,10 @@
 /* utilities */
 var copyArray = function(arr) {
-  arr.map(function(v) { return v.concat([]) });
+  return arr.map(function(v) { return v.concat([]) });
+};
+
+var toarr = function(nl) {
+  return [].slice.apply(nl);
 };
 
 /* sample loading */
@@ -60,7 +64,7 @@ var writeValuesIntoRow = function(values, tr, name) {
   });
 };
 
-var writeValuesIntoTable = function(patterns, trs) {
+var writeValuesIntoTable = function(patterns, trs, names) {
   return patterns.map(function(values, i) {
     return writeValuesIntoRow(values, trs[i], names[i]);
   });
@@ -153,6 +157,17 @@ var listenForSwingChange = function(swing, meter, diagram) {
 var listenForJdChange = function(jds, rows) {
   jds.forEach(function(jd, i) {
     rows[i].style.marginLeft = (jd*100) + "px";
+  });
+};
+
+var listenForMutes = function(mutes, els, trs) {
+  els.forEach(function(el, i) {
+    el.addEventListener("mouseup", function() {
+      mutes[i] = !mutes[i];
+      $(el)[(mutes[i]?"add":"remove")+"Class"]("muted");
+      $(trs[i])[(mutes[i]?"add":"remove")+"Class"]("muted");
+      console.log(trs[i]);
+    }, true);
   });
 };
 

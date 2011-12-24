@@ -234,6 +234,13 @@
     -webkit-transition: none !important;
   }
 
+  .muted .td[volume="1"],
+  .muted .td[volume="2"],
+  .muted .td[volume="3"],
+  .muted .td[volume="4"] {
+    background: #ddd;
+  }
+
   .tr.modifiers .td {
     -webkit-border-radius: 12px;
     height: 11px;
@@ -271,6 +278,27 @@
 
   .tr.modifiers .td[stick="false"][modified="1"] .plus {
     display: block;
+  }
+
+  #mutes {
+    position: absolute;
+    width: 30px;
+    height: 100px;
+    top: 45px;
+    left: -75px;
+  }
+
+  #mutes .mute {
+    width: 15px;
+    height: 15px;
+    -webkit-border-radius: 15px;
+    background: #ddd;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+
+  #mutes .muted {
+    background: #eee;
   }
 
   #controls {

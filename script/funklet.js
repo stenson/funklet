@@ -14,7 +14,7 @@ var stopButton = getElement("stop");
 var bpmMeter = getElement("bpm");
 var swingMeter = getElement("swing-meter");
 var width = diagram.clientWidth;
-var trs = [].slice.apply(diagram.querySelectorAll(".tr"));
+var trs = toarr(diagram.querySelectorAll(".tr"));
 
 // sample names
 var names = ["hat", "snare", "kick"];
@@ -32,16 +32,18 @@ mods.forEach(function(mod) {
 });
 var modifiers = writeModifiersIntoTable(length+1, trs[0], modifiedValues, values[0]);
 var rows = writeValuesIntoTable(values, trs.slice(1), names);
-var bpm = { value: parseInt(bpmMeter.value, 10) };
 
+var bpm = { value: parseInt(bpmMeter.value, 10) };
 var swing = {};
 var jd = [0, 0, 0];
+var mutes = [0, 0, 0];
 
 listenForModifiers(modifiers, modifiedValues, values);
 listenForValuesFromRows(rows, values, 4, modifiers);
 listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
 listenForSwingChange(swing, swingMeter, diagram);
-listenForJdChange(jd, [].slice.apply(diagram.querySelectorAll(".hat, .snare, .kick")));
+listenForJdChange(jd, toarr(diagram.querySelectorAll(".hat, .snare, .kick")));
+listenForMutes(mutes, toarr(diagram.querySelectorAll(".mute")), trs.slice(1));
 
 var context = new AudioContext();
 var outstandingOpen = null;
@@ -67,7 +69,7 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
     rows[j][last].className = "td";
     rows[j][_i].className = "td current";
 
-    cback(_i, vol); // yield
+    (!mutes[j]) && cback(_i, vol); // yield
 
     i[j] = (_i === length) ? 0 : (_i + 1);
   };
@@ -85,10 +87,10 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
 
       if (vol) {
         if (modified) {
-          outstandingOpen = playSampleWithBuffer(context, modifiedBuffer, 0, 0.85);
+          outstandingOpen = playSampleWithBuffer(context, modifiedBuffer, 0, 0.75);
         }
         else {
-          playSampleWithBuffer(context, buffer, 0, 1);
+          playSampleWithBuffer(context, buffer, 0, 0.75);
         }
       } else if (modified) {
         playSampleWithBuffer(context, buffers.foothat, 0, 1);

@@ -2,3 +2,4 @@ todo
 deploy
 _site/
 _site/*
+.DS_Store

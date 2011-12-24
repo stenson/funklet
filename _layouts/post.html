@@ -24,6 +24,13 @@ layout: default
       <div class="tr hat"></div>
       <div class="tr snare"></div>
       <div class="tr kick"></div>
+      <div id="mutes">
+        <div id="hat-mute" class="mute"></div>
+        <div id="snare-mute" class="mute"></div>
+        <div id="kick-mute" class="mute"></div>
+      </div>
+      <div id="jds">
+      </div>
     </div>
     <div id="controls">
       <form id="bpm-form">
@@ -53,6 +60,7 @@ layout: default
   {{ content }}
 </div>
 <!-- <script src="http://connect.soundcloud.com/sdk.js"></script> -->
+<script src="/script/jquery.js"></script>
 <script src="/script/audionode.js"></script>
 <script src="/script/cabin.js"></script>
 <script src="/script/functions.js"></script>
