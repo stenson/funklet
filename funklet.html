@@ -6,46 +6,49 @@
    <link rel="stylesheet" href="/style/diagram.css"/>
  </head>
  <body>
-   <div id="diagram-container">
-     <div id="diagram">
-       <div id="decoration"></div>
-       <div id="stub-left" class="stub"></div>
-       <div id="stub-right" class="stub"></div>
-       <div class="tr modifiers"></div>
-       <div class="tr hat"></div>
-       <div class="tr snare"></div>
-       <div class="tr kick"></div>
-       <div id="mutes">
-         <div class="mute"></div>
-         <div class="mute"></div>
-         <div class="mute"></div>
+   <div id="outside-container">
+     <div id="diagram-container">
+       <div id="diagram">
+         <div id="decoration"></div>
+         <div id="stub-left" class="stub"></div>
+         <div id="stub-right" class="stub"></div>
+         <div class="tr modifiers"></div>
+         <div class="tr hat"></div>
+         <div class="tr snare"></div>
+         <div class="tr kick"></div>
+         <div id="mutes" class="hoveronly">
+           <div class="mute"></div>
+           <div class="mute"></div>
+           <div class="mute"></div>
+         </div>
+         <div id="jds" class="hoveronly">
+           <div class="jd"><div>-</div><div>+</div></div>
+           <div class="jd"><div>-</div><div>+</div></div>
+           <div class="jd"><div>-</div><div>+</div></div>
+         </div>
        </div>
-       <div id="jds">
-         <div class="jd"><div>-</div><div>+</div></div>
-         <div class="jd"><div>-</div><div>+</div></div>
-         <div class="jd"><div>-</div><div>+</div></div>
-       </div>
-     </div>
-     <div id="controls">
-       <form id="bpm-form">
-         <button class="control" id="start">&#9654;</button>
-         <button class="control" id="stop">&#9724;</button>
-         &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="120"/><span>BPM</span>
-       </form>
-       <div id="swing-meter" data-swing="0">
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
+       <div id="controls">
+         <form id="bpm-form">
+           <button class="control" id="start">&#9654;</button>
+           <button class="control" id="stop">&#9724;</button>
+           <span class="hoveronly">&nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="120"/><span>BPM</span></span>
+         </form>
+         <a href="#" id="half-time" class="hoveronly">½</a>
+         <div id="swing-meter" data-swing="0" class="hoveronly">
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+           <div></div>
+         </div>
        </div>
      </div>
    </div>

@@ -4,6 +4,12 @@
   font-family: "Helvetica Neue", Arial, Helvetica;
 }
 
+#outside-container {
+  width: 950px;
+  margin: auto auto;
+  padding: 25px 0;
+}
+
 #diagram-container {
   width: 800px;
   margin: auto auto;
@@ -13,7 +19,6 @@
   position: relative;
   height: 115px;
   margin-top:15px;
-  marginb-ttom:15px;
 }
 
 #line {
@@ -46,6 +51,11 @@
   height: 25px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+}
+
+.tr.kick {
+  height: 35px;
 }
 
 .tr.modifiers {
@@ -247,8 +257,8 @@
 }
 
 #controls {
-  margin-top:50px;
-  color: #777;
+  margin-top:35px;
+  color: #aaa;
   position: relative;
 }
 
@@ -256,24 +266,26 @@
   background: none;
   border: none;
   font-size: 24px;
-  color: #333;
+  color: #999;
   float: left;
   width: 33px;
 }
 
 #start {
   visibility: hidden;
+  color: #222;
 }
 
 #stop {
   display: none;
+  color: #222;
 }
 
 #bpm {
   width: 50px;
   font-family: "Helvetica Neue", ;
   font-size: 24px;
-  color: #333;
+  color: #777;
   border: none;
   text-align: center;
 }
@@ -302,4 +314,36 @@
 
 #swing-meter div:hover {
   background: #777;
+}
+
+#half-time {
+  position: absolute;
+  top: 2px;
+  left: 165px;
+  padding: 5px;
+  background: #ddd;
+  color: white;
+  text-decoration: none;
+  -webkit-border-radius: 20px;
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  font-size: 15px;
+}
+
+#half-time:hover {
+  background: #777;
+}
+
+#half-time.on {
+  background: #555;
+}
+
+#outside-container .hoveronly {
+  opacity: 0.1;
+  -webkit-transition: opacity 0.1s linear;
+}
+
+#outside-container:hover .hoveronly {
+  opacity: 1.0;
 }

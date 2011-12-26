@@ -117,12 +117,13 @@ var listenForModifiers = function(modifiers, modifiedValues, values) {
   });
 };
 
-var listenForBpmChange = function(bpm, el, form) {
+var listenForBpmChange = function(bpm, el, form, halftime) {
   var updateBpm = function() {
     setTimeout(function() {
       var i = parseInt(el.value, 10);
       if (i && i !== bpm.value) bpm.value = i;
       el.value = bpm.value;
+      $(halftime).removeClass("on");
     }, 0);
   };
 
@@ -131,6 +132,16 @@ var listenForBpmChange = function(bpm, el, form) {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     updateBpm();
+  });
+
+  halftime.addEventListener("mouseup", function(e) {
+    e.preventDefault();
+    if ($(halftime).hasClass("on")) {
+      updateBpm();
+    } else {
+      bpm.value = bpm.value / 2;
+      $(halftime).addClass("on");
+    }
   });
 
   el.value = bpm.value;

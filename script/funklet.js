@@ -62,7 +62,7 @@ var rows = writeValuesIntoTable(values, trs.slice(1), names);
 
 listenForModifiers(modifiers, modifiedValues, values);
 listenForValuesFromRows(rows, values, 4, modifiers);
-listenForBpmChange(bpm, getElement("bpm"), getElement("bpm-form"));
+listenForBpmChange(bpm, getElement("bpm"), getElement("bpm-form"), getElement("half-time"));
 listenForSwingChange(swing, getElement("swing-meter"), diagram);
 listenForJdChange(jds, trs.slice(1), toarr(diagram.querySelectorAll(".jd")));
 listenForMutes(mutes, toarr(diagram.querySelectorAll(".mute")), trs.slice(1));
