@@ -8,6 +8,7 @@ bpm: "78"
 image: ""
 position: "200px -200px"
 swing: "0"
+funklet: "/funklet.html?vals=21212121212121212121212122030303;00004004040040040000400400000004;30300302303303023030030023030302&mods=.........................1..1..1&b=78&s=0"
 ---
 
 <p>Grooving is a spiritual thing for James Gadson.</p>
@@ -17,12 +18,3 @@ swing: "0"
 <p>If you listen closely, you can hear the bass bleeding into the drum mics during the breakdowns.</p>
 
 <p>I dig this work-flow.  When the album version starts, the musicians have already been deep in the groove for a few minutes.</p>
-
-<script>
-  var mods = [ [6,1], [6,3], [7,1] ];
-  var values = [
-    [2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 0, 3, 0, 3, 0, 3],
-    [0, 0, 0, 0, 4, 0, 0, 4, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4],
-    [3, 0, 3, 0, 0, 3, 0, 2, 3, 0, 3, 3, 0, 3, 0, 2, 3, 0, 3, 0, 0, 3, 0, 0, 2, 3, 0, 3, 0, 3, 0, 2]
-  ];
-</script>

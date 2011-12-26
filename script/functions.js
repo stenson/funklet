@@ -132,6 +132,9 @@ var listenForBpmChange = function(bpm, el, form) {
     e.preventDefault();
     updateBpm();
   });
+
+  el.value = bpm.value;
+  updateBpm();
 };
 
 var listenForSwingChange = function(swing, meter, diagram) {
@@ -154,9 +157,20 @@ var listenForSwingChange = function(swing, meter, diagram) {
   set(parseInt(meter.getAttribute("data-swing"), 10));
 };
 
-var listenForJdChange = function(jds, rows) {
-  jds.forEach(function(jd, i) {
-    rows[i].style.marginLeft = (jd*100) + "px";
+var listenForJdChange = function(jds, rows, controls) {
+  var update = function(i) {
+    rows[i].style.marginLeft = (jds[i]*100) + "px";
+  };
+
+  controls.forEach(function(control, i) {
+    update(i);
+
+    toarr(control.children).forEach(function(el, j) {
+      el.addEventListener("mouseup", function() {
+        jds[i] = j === 0 ? jds[i] - 0.01 : jds[i] + 0.01;
+        update(i);
+      }, true);
+    });
   });
 };
 
@@ -180,7 +194,7 @@ var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swin
     var current = context.currentTime;
     var lag = current - lastTime;
 
-    if (current > lastTime + clickRate +jd[0][jd[1]]) {
+    if (current > lastTime + clickRate + jd[0][jd[1]]) {
       clickback(lag);
 
       var shiftNext = (++i)%2 === 0;

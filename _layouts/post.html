@@ -15,53 +15,10 @@ layout: default
   </div>
 </div>
 <div id="container">
-  <div id="diagram-container">
-    <div id="diagram">
-      <div id="decoration"></div>
-      <div id="stub-left" class="stub"></div>
-      <div id="stub-right" class="stub"></div>
-      <div class="tr modifiers"></div>
-      <div class="tr hat"></div>
-      <div class="tr snare"></div>
-      <div class="tr kick"></div>
-      <div id="mutes">
-        <div id="hat-mute" class="mute"></div>
-        <div id="snare-mute" class="mute"></div>
-        <div id="kick-mute" class="mute"></div>
-      </div>
-      <div id="jds">
-      </div>
-    </div>
-    <div id="controls">
-      <form id="bpm-form">
-        <button class="control" id="start">&#9654;</button>
-        <button class="control" id="stop">&#9724;</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span>@</span><input id="bpm" type="text" value="{{ page.bpm }}"/><span>BPM</span>
-      </form>
-      <div id="swing-meter" data-swing="{{ page.swing }}">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+  <div id="funklet-container">
+    <iframe src="{{ page.funklet }}"></iframe>
   </div>
 </div>
 <div id="text">
   {{ content }}
 </div>
-<!-- <script src="http://connect.soundcloud.com/sdk.js"></script> -->
-<script src="/script/jquery.js"></script>
-<script src="/script/audionode.js"></script>
-<script src="/script/cabin.js"></script>
-<script src="/script/functions.js"></script>
-<script src="/script/funklet.js"></script>

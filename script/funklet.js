@@ -3,6 +3,40 @@
 //   redirect_uri: "http://funklet.com/callback.html"
 // });
 
+var values = [];
+var modifiedValues = [];
+var bpm = { value: 120 };
+var swing = { value: 0 };
+var jds = [0, 0, 0];
+var mutes = [0, 0, 0];
+
+var readParams = function() {
+  window.location.search.slice(1).split("&").forEach(function(param) {
+    var ps = param.split("=");
+    window[ps[0]] = ps[1];
+  });
+  decode();
+};
+
+var decode = function() {
+  values = vals.split(";").map(function(v) {
+    return v.split("").map(function(i) {
+      return parseInt(i, 10);
+    });
+  });
+  modifiedValues = mods.split(".");
+  bpm.value = parseInt(b, 10);
+  swing.value = parseInt(s, 10);
+};
+
+var encode = function() {
+  var vs = values.map(function(vs){ return vs.join("") }).join(";");
+  var ms = modifiedValues.join(".");
+  console.log(["/funklet.html?vals=", vs, "&mods=", ms, "&b=", bpm.value, "&s=", swing.value].join(""));
+};
+
+readParams();
+
 var originals = copyArray(values);
 var length = values[0].length - 1;
 
@@ -11,9 +45,6 @@ var getElement = document.getElementById.bind(document);
 var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
-var bpmMeter = getElement("bpm");
-var swingMeter = getElement("swing-meter");
-var width = diagram.clientWidth;
 var trs = toarr(diagram.querySelectorAll(".tr"));
 
 // sample names
@@ -26,33 +57,18 @@ var sampleNames = (["foothat"])
   .concat(buildNames("snare", [1,2,3,4]))
   .concat(buildNames("kick",  [1,2,3,4]));
 
-var modifiedValues = [];
-mods.forEach(function(mod) {
-  modifiedValues[mod[0]*4 + mod[1]] = 1;
-});
 var modifiers = writeModifiersIntoTable(length+1, trs[0], modifiedValues, values[0]);
 var rows = writeValuesIntoTable(values, trs.slice(1), names);
 
-var bpm = { value: parseInt(bpmMeter.value, 10) };
-var swing = {};
-var jd = [0, 0, 0];
-var mutes = [0, 0, 0];
-
 listenForModifiers(modifiers, modifiedValues, values);
 listenForValuesFromRows(rows, values, 4, modifiers);
-listenForBpmChange(bpm, bpmMeter, getElement("bpm-form"));
-listenForSwingChange(swing, swingMeter, diagram);
-listenForJdChange(jd, toarr(diagram.querySelectorAll(".hat, .snare, .kick")));
+listenForBpmChange(bpm, getElement("bpm"), getElement("bpm-form"));
+listenForSwingChange(swing, getElement("swing-meter"), diagram);
+listenForJdChange(jds, trs.slice(1), toarr(diagram.querySelectorAll(".jd")));
 listenForMutes(mutes, toarr(diagram.querySelectorAll(".mute")), trs.slice(1));
 
 var context = new AudioContext();
 var outstandingOpen = null;
-
-var print = function() {
-  console.log("var values = [\n", values.map(function(vs) {
-    return "  [" + vs.join(", ") + "]";
-  }).join(",\n"), "\n]");
-};
 
 getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
@@ -100,13 +116,13 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
 
   var snareBack = function(lag) {
     runLightsWithCallback(1, function(_i, vol) {
-      vol && playSampleWithBuffer(context, buffers["snare"+""+vol], 0, 1);
+      vol && playSampleWithBuffer(context, buffers["snare"+vol], 0, 1);
     });
   };
 
   var kickBack = function(lag) {
     runLightsWithCallback(2, function(_i, vol) {
-      vol && playSampleWithBuffer(context, buffers["kick"+""+vol], 0, 1);
+      vol && playSampleWithBuffer(context, buffers["kick"+vol], 0, 1);
     });
   };
 
@@ -114,9 +130,9 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
     startButton.style.display = "none";
     stopButton.style.display = "block";
     intervals = [
-      runCallbackWithMetronome(context, bpm, 4, hatBack, swing, [jd, 0]),
-      runCallbackWithMetronome(context, bpm, 4, snareBack, swing, [jd, 1]),
-      runCallbackWithMetronome(context, bpm, 4, kickBack, swing, [jd, 2])
+      runCallbackWithMetronome(context, bpm, 4, hatBack, swing, [jds, 0]),
+      runCallbackWithMetronome(context, bpm, 4, snareBack, swing, [jds, 1]),
+      runCallbackWithMetronome(context, bpm, 4, kickBack, swing, [jds, 2])
     ];
   };
 
