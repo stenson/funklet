@@ -7,6 +7,14 @@ var toarr = function(nl) {
   return [].slice.apply(nl);
 };
 
+var splitToCallback = function(arr, delim, fn) {
+  return arr.map(function(v) {
+    return v.split(delim).map(function(i) {
+      return fn(i);
+    });
+  });
+};
+
 /* sample loading */
 
 var loadSampleWithUrl = function(context, url, callback) {
@@ -118,12 +126,14 @@ var listenForModifiers = function(modifiers, modifiedValues, values) {
 };
 
 var listenForBpmChange = function(bpm, el, form, halftime) {
+  var isHalftimed = false;
+
   var updateBpm = function() {
     setTimeout(function() {
       var i = parseInt(el.value, 10);
       if (i && i !== bpm.value) bpm.value = i;
       el.value = bpm.value;
-      $(halftime).removeClass("on");
+      isHalftimed && (bpm.value = bpm.value/2);
     }, 0);
   };
 
@@ -131,18 +141,14 @@ var listenForBpmChange = function(bpm, el, form, halftime) {
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
-    updateBpm();
-  });
+  }, true);
 
-  halftime.addEventListener("mouseup", function(e) {
+  halftime.addEventListener("click", function(e) {
     e.preventDefault();
-    if ($(halftime).hasClass("on")) {
-      updateBpm();
-    } else {
-      bpm.value = bpm.value / 2;
-      $(halftime).addClass("on");
-    }
-  });
+    isHalftimed = !isHalftimed;
+    $(halftime)[isHalftimed?"addClass":"removeClass"]("on");
+    updateBpm();
+  }, true);
 
   el.value = bpm.value;
   updateBpm();
@@ -165,7 +171,7 @@ var listenForSwingChange = function(swing, meter, diagram) {
     m.addEventListener("mouseup", function() { set(i) }, true);
   });
 
-  set(parseInt(meter.getAttribute("data-swing"), 10));
+  set(parseInt(swing.value, 10)); // initialize
 };
 
 var listenForJdChange = function(jds, rows, controls) {
@@ -191,9 +197,15 @@ var listenForMutes = function(mutes, els, trs) {
       mutes[i] = !mutes[i];
       $(el)[(mutes[i]?"add":"remove")+"Class"]("muted");
       $(trs[i])[(mutes[i]?"add":"remove")+"Class"]("muted");
-      console.log(trs[i]);
     }, true);
   });
+};
+
+var listenForSave = function(button, callback) {
+  button.addEventListener("click", function(e) {
+    e.preventDefault();
+    callback();
+  }, true);
 };
 
 var runCallbackWithMetronome = function(context, bpm, readCount, clickback, swing, jd) {

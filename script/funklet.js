@@ -19,20 +19,11 @@ var readParams = function() {
 };
 
 var decode = function() {
-  values = vals.split(";").map(function(v) {
-    return v.split("").map(function(i) {
-      return parseInt(i, 10);
-    });
-  });
-  modifiedValues = mods.split(".");
+  values = splitToCallback(vals.split(";"), "", parseInt);
+  modifiedValues = splitToCallback([mods], ".", parseInt)[0];
   bpm.value = parseInt(b, 10);
   swing.value = parseInt(s, 10);
-};
-
-var encode = function() {
-  var vs = values.map(function(vs){ return vs.join("") }).join(";");
-  var ms = modifiedValues.join(".");
-  console.log(["/funklet.html?vals=", vs, "&mods=", ms, "&b=", bpm.value, "&s=", swing.value].join(""));
+  jds = splitToCallback([jd], ",", parseFloat)[0];
 };
 
 readParams();
@@ -41,7 +32,7 @@ var originals = copyArray(values);
 var length = values[0].length - 1;
 
 // dom elements
-var getElement = document.getElementById.bind(document);
+var getElement = function(id) { return $("#"+id)[0] };
 var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
@@ -121,6 +112,8 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   };
 
   var kickBack = function(lag) {
+    if (lag > 2) return stop();
+
     runLightsWithCallback(2, function(_i, vol) {
       vol && playSampleWithBuffer(context, buffers["kick"+vol], 0, 1);
     });
@@ -146,4 +139,16 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
   startButton.addEventListener("mouseup", start, true);
   stopButton.addEventListener("mouseup", stop, true);
   startButton.style.visibility = "visible";
+
+  listenForSave(getElement("save"), function() {
+    stop();
+    alert([
+      "/funklet.html?vals=", values.map(function(vs){ return vs.join("") }).join(";"),
+      "&mods=", modifiedValues.join(".").replace(/NaN|0/g, ""),
+      "&b=", bpm.value,
+      "&s=", (swing.value*12),
+      "&jd=", jds.join(",")
+    ].join(""));
+  });
+
 });

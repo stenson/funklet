@@ -181,7 +181,7 @@
   width: 11px;
   margin-left: 5px;
   margin-top: 0px;
-  background: whitesmoke;
+  background: white;
 }
 
 .tr.modifiers .td-holder {
@@ -192,6 +192,10 @@
 
 .tr.modifiers .td {
   position: relative;
+}
+
+.tr.modifiers .td:hover {
+  background: whitesmoke;
 }
 
 .tr.modifiers .td .plus {
@@ -219,7 +223,8 @@
   width: 30px;
   height: 100px;
   top: 45px;
-  left: -45px;
+  right: -45px;
+  -webkit-user-select: none;
 }
 
 #mutes .mute {
@@ -238,9 +243,10 @@
 #jds {
   position: absolute;
   top: 43px;
-  right: -65px;
+  right: -85px;
   height: 100px;
   width: 50px;
+  -webkit-user-select: none;
 }
 
 #jds .jd {
@@ -316,7 +322,7 @@
   background: #777;
 }
 
-#half-time {
+.grey-button {
   position: absolute;
   top: 2px;
   left: 165px;
@@ -329,13 +335,14 @@
   height: 19px;
   text-align: center;
   font-size: 15px;
+  -webkit-user-select: none;
 }
 
-#half-time:hover {
+.grey-button:hover {
   background: #777;
 }
 
-#half-time.on {
+.grey-button.on {
   background: #555;
 }
 
