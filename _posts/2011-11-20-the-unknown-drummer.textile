@@ -4,10 +4,8 @@ who: "The Unknown Drummer"
 title: "Str Bts DC Gogo 100"
 act: "n/a"
 year: "n/a"
-bpm: "110"
 image: ""
-position: "200px -200px"
-swing: "3"
+funklet: "/funklet.html?vals=02402402400002240240240240000224;01004001000040010100400100004001;40040040004000004004004000400000&mods=........1..1..............1..1&b=110&s=3&jd=0,0,0"
 ---
 
 <p>Welcome to the Tomb of the Unknowns.</p>
@@ -19,12 +17,3 @@ swing: "3"
 <p>Between poor crediting (common during the sixties and seventies) and nameless loop libraries, it has become difficult to identify who played some of the funkiest beats.</p>
 
 <p>We shall call this beat by its file name: <em>Strt Bts DC Gogo 100.</em></p>
-
-<script>
-  var mods = [ [2,0], [2,2], [6,0], [6,2] ];
-  var values = [
-    [0, 2, 4, 0, 2, 4, 0, 2, 4, 0, 0, 0, 0, 2, 2, 4, 0, 2, 4, 0, 2, 4, 0, 2, 4, 0, 0, 0, 0, 2, 2, 4],
-    [0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 1, 0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 1],
-    [4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0]
-  ];
-</script>

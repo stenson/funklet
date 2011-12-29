@@ -4,19 +4,8 @@ who: "Bernard Purdie"
 title: "Hot Sweat"
 act: "Master Drummers Volume 1"
 year: "1996"
-bpm: "115"
 image: "purdie.jpg"
-position: "0px -350px"
-swing: "0"
+funklet: "/funklet.html?vals=30404010402020202021204040212020;00004002110020410101420101014100;40000000004000000034000000340040&mods=&b=115&s=0&jd=0,0,0"
 ---
 
 <p>Purdie&rsquo;s take on Stubblefield&rsquo;s &ldquo;Cold Sweat.&rdquo;</p>
-
-<script>
-  var mods = [];
-  var values = [
-    [3, 0, 4, 0, 4, 0, 1, 0, 4, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 4, 0, 4, 0, 2, 1, 2, 0, 2, 0],
-    [0, 0, 0, 0, 4, 0, 0, 2, 1, 1, 0, 0, 2, 0, 4, 1, 0, 1, 0, 1, 4, 2, 0, 1, 0, 1, 0, 1, 4, 1, 0, 0],
-    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 4, 0]
-  ];
-</script>

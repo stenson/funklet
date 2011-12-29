@@ -4,10 +4,8 @@ who: "Narada Michael Walden"
 title: "Come Dancing"
 act: "Jeff Beck"
 year: "1976"
-bpm: "96"
 image: "narada.jpg"
-position: "0px -250px"
-swing: "2"
+funklet: "/funklet.html?vals=30203020302030203020302020403020;01204210012042100200420004004210;40000003400000034040040340000003&mods=..........................1&b=96&s=2&jd=0,0,0"
 ---
 
 <p>Narada wrote this tune. Wilbur Bascomb&rsquo;s bass playing will break your neck.</p>
@@ -15,12 +13,3 @@ swing: "2"
 <p>This particular pattern only happens during the drum intro.</p>
 <p>Graphically, it&rsquo;s one of the mroe symmetrical patterns. However, when playing it, rather than thinking about the symmetry or the clever dialog between kick and snare, you should imagine an overweight Daffy Duck grumblign his way into a strip club.</p>
 <p>This imagery has helped a lot of my students nail the swing of this groove.</p>
-
-<script>
-  var mods = [[6,2]];
-  var values = [
-    [3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 3, 0, 2, 0, 2, 0, 4, 0, 3, 0, 2, 0],
-    [0, 1, 2, 0, 4, 2, 1, 0, 0, 1, 2, 0, 4, 2, 1, 0, 0, 2, 0, 0, 4, 2, 0, 0, 0, 4, 0, 0, 4, 2, 1, 0],
-    [4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4, 0, 0, 4, 0, 3, 4, 0, 0, 0, 0, 0, 0, 3]
-  ];
-</script>
