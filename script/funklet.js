@@ -1,38 +1,28 @@
-// SC.initialize({
-//   client_id: "f90eca9d4dfe9abeaf32a8f09bdf6581",
-//   redirect_uri: "http://funklet.com/callback.html"
-// });
-
-var values = [];
-var modifiedValues = [];
+var values = ([0,0,0]).map(function() { return emptyArray(32) });
+var modifiedValues = emptyArray(32);
 var bpm = { value: 120 };
 var swing = { value: 0 };
 var jds = [0, 0, 0];
 var mutes = [0, 0, 0];
 
-var readParams = function() {
+(function readParams() {
   window.location.search.slice(1).split("&").forEach(function(param) {
     var ps = param.split("=");
     window[ps[0]] = ps[1];
   });
-  decode();
-};
 
-var decode = function() {
-  values = splitToCallback(vals.split(";"), "", parseInt);
-  modifiedValues = splitToCallback([mods], ".", parseInt)[0];
-  bpm.value = parseInt(b, 10);
-  swing.value = parseInt(s, 10);
-  jds = splitToCallback([jd], ",", parseFloat)[0];
-};
-
-readParams();
+  if (window.vals) values = splitToCallback(vals.split(";"), "", parseInt);
+  if (window.mods) modifiedValues = splitToCallback([mods], ".", parseInt)[0];
+  if (window.b) bpm.value = parseInt(b, 10);
+  if (window.s) swing.value = parseInt(s, 10);
+  if (window.jd) jds = splitToCallback([jd], ",", parseFloat)[0];
+})();
 
 var originals = copyArray(values);
-var length = values[0].length - 1;
+var length = 31;
 
 // dom elements
-var getElement = function(id) { return $("#"+id)[0] };
+var getElement = document.getElementById.bind(document);
 var diagram = getElement("diagram");
 var startButton = getElement("start");
 var stopButton = getElement("stop");
@@ -42,7 +32,7 @@ var trs = toarr(diagram.querySelectorAll(".tr"));
 var names = ["hat", "snare", "kick"];
 var buildNames = function(a, b) { return b.map(function(i) { return a+""+i }) };
 
-var sampleNames = (["foothat"])
+var sampleNames = (["foothat", "spring"])
   .concat(buildNames("hat",   [1,2,3,4]))
   .concat(buildNames("ohat",  [1,2,3,4]))
   .concat(buildNames("snare", [1,2,3,4]))
@@ -58,11 +48,32 @@ listenForSwingChange(swing, getElement("swing-meter"), diagram);
 listenForJdChange(jds, trs.slice(1), toarr(diagram.querySelectorAll(".jd")));
 listenForMutes(mutes, toarr(diagram.querySelectorAll(".mute")), trs.slice(1));
 
-var context = new AudioContext();
-var outstandingOpen = null;
+var dryEffectGain = 1.0;
+var wetEffectGain = 0.1;
+var kickRate = hatRate = snareRate = 1;
 
-getBuffersFromSampleNames(sampleNames, context, function(buffers) {
+var context = new AudioContext();
+var convolver = context.createConvolver();
+var compressor = context.createDynamicsCompressor();
+var gainNode = context.createGainNode();
+var effectNode = context.createGainNode();
+
+compressor.connect(context.destination);
+
+gainNode.gain.value = 1.0;
+gainNode.connect(context.destination);
+effectNode.gain.value = 1.0;
+effectNode.connect(compressor);
+convolver.connect(effectNode);
+
+var outstandingOpen = null;
+var buffers;
+
+getBuffersFromSampleNames(sampleNames, context, function(bs) {
+  buffers = bs;
   playSampleWithBuffer(context, buffers.kick4, 0, 0); // start the audio context
+
+  convolver.buffer = buffers.spring;
 
   var intervals = [];
 
@@ -94,20 +105,20 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
 
       if (vol) {
         if (modified) {
-          outstandingOpen = playSampleWithBuffer(context, modifiedBuffer, 0, 0.75);
+          outstandingOpen = playSampleWithBuffer(context, modifiedBuffer, 0, 1, hatRate);
         }
         else {
-          playSampleWithBuffer(context, buffer, 0, 0.75);
+          playSampleWithBuffer(context, buffer, 0, 1, hatRate);
         }
       } else if (modified) {
-        playSampleWithBuffer(context, buffers.foothat, 0, 1);
+        playSampleWithBuffer(context, buffers.foothat, 0, 1, hatRate);
       }
     });
   };
 
   var snareBack = function(lag) {
     runLightsWithCallback(1, function(_i, vol) {
-      vol && playSampleWithBuffer(context, buffers["snare"+vol], 0, 1);
+      vol && playSampleWithBuffer(context, buffers["snare"+vol], 0, 1, snareRate);
     });
   };
 
@@ -115,7 +126,7 @@ getBuffersFromSampleNames(sampleNames, context, function(buffers) {
     if (lag > 2) return stop();
 
     runLightsWithCallback(2, function(_i, vol) {
-      vol && playSampleWithBuffer(context, buffers["kick"+vol], 0, 1);
+      vol && playSampleWithBuffer(context, buffers["kick"+vol], 0, 1, kickRate);
     });
   };
 

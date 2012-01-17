@@ -7,6 +7,12 @@ var toarr = function(nl) {
   return [].slice.apply(nl);
 };
 
+var emptyArray = function(length) {
+  var arr = [];
+  while (length--) arr.push(0);
+  return arr;
+};
+
 var splitToCallback = function(arr, delim, fn) {
   return arr.map(function(v) {
     return v.split(delim).map(function(i) {
@@ -22,12 +28,14 @@ var loadSampleWithUrl = function(context, url, callback) {
   request.open("GET", url, true);
   request.responseType = "arraybuffer";
   request.onload = function() {
-    context.decodeAudioData(request.response, callback);
+    //context.decodeAudioData(request.response, callback);
+    callback(context.createBuffer(request.response, false));
   };
   request.send();
 };
 
 var getBuffersFromSampleNames = function(names, context, callback) {
+  //return;
   var buffers = {};
   var queue = 0;
 
@@ -43,14 +51,22 @@ var getBuffersFromSampleNames = function(names, context, callback) {
 
 /* sample playing */
 
-var playSampleWithBuffer = function(context, buffer, start, volume) {
-  var gainNode = context.createGainNode();
+var playSampleWithBuffer = function(context, buffer, start, volume, rate) {
   var source = context.createBufferSource();
+  var dryGain = context.createGainNode();
+  var wetGain = context.createGainNode();
+
+  // console.log(source.playbackRate.value);
+  source.playbackRate.value = rate;
 
   source.buffer = buffer;
-  source.connect(gainNode);
-  gainNode.connect(context.destination);
-  gainNode.gain.value = volume;
+  dryGain.gain.value = volume * dryEffectGain;
+  wetGain.gain.value = volume * wetEffectGain;
+  source.connect(dryGain);
+  source.connect(wetGain);
+  dryGain.connect(gainNode);
+  wetGain.connect(convolver);
+
   source.noteOn(start);
   return source;
 };
