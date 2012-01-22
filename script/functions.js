@@ -59,7 +59,7 @@ var playSampleWithBuffer = function(context, buffer, start, volume, rate) {
   // console.log(source.playbackRate.value);
   source.playbackRate.value = rate;
 
-  source.buffer = buffer;
+  source.buffer = buffer ? buffer : convolver.buffer;
   dryGain.gain.value = volume * dryEffectGain;
   wetGain.gain.value = volume * wetEffectGain;
   source.connect(dryGain);
@@ -190,7 +190,7 @@ var listenForSwingChange = function(swing, meter, diagram) {
   set(parseInt(swing.value, 10)); // initialize
 };
 
-var listenForJdChange = function(jds, rows, controls) {
+var listenForJdChange = function(jds, controls, rows) {
   var update = function(i) {
     rows[i].style.marginLeft = (jds[i]*100) + "px";
   };
@@ -213,6 +213,46 @@ var listenForMutes = function(mutes, els, trs) {
       mutes[i] = !mutes[i];
       $(el)[(mutes[i]?"add":"remove")+"Class"]("muted");
       $(trs[i])[(mutes[i]?"add":"remove")+"Class"]("muted");
+    }, true);
+  });
+};
+
+var listenForRateChanges = function(rates, els, trs) {
+  els.forEach(function(el, i) {
+    var offsetTop = el.getBoundingClientRect().top;
+    var meter = el.children[0];
+
+    var listenToDrag = function(e) {
+      var delta = e.pageY - offsetTop;
+      meter.style.top = delta + "px";
+      rates[i] = 15/delta;
+    };
+
+    el.addEventListener("mousedown", function(e) {
+      listenToDrag(e);
+      el.addEventListener("mousemove", listenToDrag, true);
+    }, true);
+
+    el.addEventListener("mouseup", function(e) {
+      el.removeEventListener("mousemove", listenToDrag, true);
+    }, true);
+  });
+};
+
+var listenForAlts = function(alts, bffs, els, trs) {
+  var map = ["hat", "snare", "kick"];
+
+  els.forEach(function(el, i) {
+    el.addEventListener("mouseup", function(e) {
+      var r = bffs[map[i]];
+      alts[i] = !alts[i];
+      r.c = alts[i] ? r.a : r.o;
+      el.className = alts[i] ? "alt altered" : "alt";
+
+      if (i === 0) {
+        var o = bffs.ohat;
+        o.c = alts[i] ? o.a : o.o;
+      }
     }, true);
   });
 };

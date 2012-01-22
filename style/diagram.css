@@ -5,13 +5,13 @@
 }
 
 #outside-container {
-  width: 950px;
+  width: 727px;
   margin: auto auto;
   padding: 25px 0;
 }
 
 #diagram-container {
-  width: 800px;
+  width: 736px;
   margin: auto auto;
 }
 
@@ -68,7 +68,7 @@
 
 .td-holder {
   height: 25px;
-  width: 22px;
+  width: 20px;
   border-right: 1px solid #eee;
   float: left;
 }
@@ -107,7 +107,7 @@
 .swing-12 .td-holder:nth-child(2n) .td { margin-left: 15px; }
 
 #decoration {
-  width: 392px;
+  width: 360px;
   height: 30px;
 }
 
@@ -130,7 +130,7 @@
 .td {
   margin-top: 7px;
   height: 18px;
-  width: 22px;
+  width: 20px;
   background: none;
   opacity: 0.4;
   cursor: pointer;
@@ -222,15 +222,15 @@
   position: absolute;
   width: 30px;
   height: 100px;
-  top: 45px;
-  right: -45px;
+  top: 48px;
+  right: -31px;
   -webkit-user-select: none;
 }
 
 #mutes .mute {
-  width: 15px;
-  height: 15px;
-  -webkit-border-radius: 15px;
+  width: 12px;
+  height: 12px;
+  -webkit-border-radius: 12px;
   background: #ddd;
   margin-bottom: 15px;
   cursor: pointer;
@@ -243,7 +243,7 @@
 #jds {
   position: absolute;
   top: 43px;
-  right: -85px;
+  right: -71px;
   height: 100px;
   width: 50px;
   -webkit-user-select: none;
@@ -256,10 +256,55 @@
 
 #jds .jd div {
   float: left;
-  width: 18px;
+  width: 11px;
   color: #ccc;
   cursor: pointer;
   text-align: center;
+}
+
+#rates {
+  position: absolute;
+  top: 39px;
+  right: -101px;
+  width: 50px;
+  height: 100px;
+  -webkit-user-select: none;
+}
+
+#rates .rate {
+  height: 28px;
+  width: 11px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1px;
+  position: relative;
+}
+
+#rates .rate:first-child {
+  border-top: 1px solid #eee;
+}
+
+#rates .meter {
+  background: #bbb;
+  height: 2px;
+  position: absolute;
+  top: 13px;
+  width: 11px;
+}
+
+#alts {
+  position: absolute;
+  top: 46px;
+  right: -85px;
+}
+
+#alts .alt {
+  cursor: pointer;
+  color: #ccc;
+  height: 29px;
+}
+
+#alts .altered {
+  color: #333;
 }
 
 #controls {
